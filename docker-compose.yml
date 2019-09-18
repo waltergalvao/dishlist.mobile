@@ -1,0 +1,13 @@
+version: '3'
+services:
+  workspace:
+    build: ./docker/workspace/
+    container_name: livemenu_workspace
+    volumes:
+      - ".:/var/www"
+      - "${ANDROID_HOME}/platforms:/usr/local/android-sdk-linux/platforms"
+    tty: true
+    expose:
+      - "80"
+    ports:
+      - "80:8080"
