@@ -1,8 +1,8 @@
 {
-  "name": "live-menu",
+  "name": "dishlist",
   "version": "0.0.1",
   "description": "Live Menu for Restaurants",
-  "productName": "LiveMenu",
+  "productName": "DishList",
   "cordovaId": "com.langara.livemenu",
   "author": "Walter Galvão <walter.galvao@biper.com.br>",
   "private": true,
