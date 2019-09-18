@@ -6,7 +6,7 @@ You need Docker to run this application.
 
 #### First Time Usage
 
-1: Set the environment variable `ANDROID_HOME` on your local machine. It should point to your Android SDK directory.  
+1: Set the environment variable `ANDROID_HOME` on your local machine. It should point to your Android SDK directory. You can install Android SDKs on your machine with Android Studio. You need to install SDK for Android 8.1 (Oreo).
 
 2: Run `docker-compose up -d` in the project root directory. Wait for the containers to be built.
 
