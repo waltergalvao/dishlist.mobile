@@ -6,6 +6,7 @@ services:
     volumes:
       - ".:/var/www"
       - "${ANDROID_HOME}/platforms:/usr/local/android-sdk-linux/platforms"
+      - "${ANDROID_HOME}/build-tools:/usr/local/android-sdk-linux/build-tools"
     tty: true
     expose:
       - "80"
