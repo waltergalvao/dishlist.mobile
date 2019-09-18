@@ -1,26 +1,25 @@
-# LiveMenu (live-menu)
+# DishList
 
-Live Menu for Restaurants
+You need Docker to run this application.
 
-## Install the dependencies
-```bash
-npm install
-```
+--- 
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
-```bash
-quasar dev
-```
+#### First Time Usage
 
-### Lint the files
-```bash
-npm run lint
-```
+1: Set the environment variable `ANDROID_HOME` on your local machine. It should point to your Android SDK directory.  
 
-### Build the app for production
-```bash
-quasar build
-```
+2: Run `docker-compose up -d` in the project root directory. Wait for the containers to be built.
 
-### Customize the configuration
-See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
+3: Run `docker exec -ti dishlist_workspace bash` to enter the container.
+
+4: Run `npm install` to install the packages
+
+---
+
+#### Running the application
+
+1: Inside the container, run `quasar dev` to start the application. You'll be able to access the application in the address: `http://localhost`
+
+#### Building Android App
+
+1: Inside the container, enter `src-cordova` directory and run `cordova build android`

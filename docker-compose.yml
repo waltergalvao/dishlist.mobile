@@ -2,7 +2,7 @@ version: '3'
 services:
   workspace:
     build: ./docker/workspace/
-    container_name: livemenu_workspace
+    container_name: dishlist_workspace
     volumes:
       - ".:/var/www"
       - "${ANDROID_HOME}/platforms:/usr/local/android-sdk-linux/platforms"
