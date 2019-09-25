@@ -5,29 +5,33 @@
                 <div class="col">
                     <q-card flat class="bg-grey-2" ref="placeDescription">
                         <div class="text-h6">{{ place.name }}</div>
-                        <div class="text-subtitle3">{{ place.description }}</div>
+                        <div class="text-subtitle3">
+                            {{ place.description }}
+                        </div>
                     </q-card>
                 </div>
             </div>
         </div>
 
         <q-tabs class="text-accent" stretch :value="null">
-            <q-tab label="Appetizers" />
-            <q-tab label="Salads" />
-            <q-tab label="Steaks" />
-            <q-tab label="Pasta" />
-            <q-tab label="Soups" />
-            <q-tab label="Hot Beverages" />
-            <q-tab label="Beverages" />
-            <q-tab label="Drinks" />
-            <q-tab label="Deserts" />
+            <q-tab
+                v-for="(category, key) in categories"
+                :label="category.name"
+                :key="key"
+            />
         </q-tabs>
 
-        <div class="q-pa-sm" v-if="items">
+        <div class="q-pa-sm" v-if="categories">
             <q-list>
-                <q-item-label header>Top 3 Dishes</q-item-label>
-                <template v-for="(item, key) in items">
-                    <menu-item :item="item" :key="key"/>
+                <template v-for="(category, key) in categories">
+                    <q-item-label header :key="key">{{
+                        category.name
+                    }}</q-item-label>
+                    <menu-item
+                        v-for="(item, key) in category.items"
+                        :item="item"
+                        :key="key"
+                    />
                 </template>
             </q-list>
         </div>
@@ -57,7 +61,7 @@ export default {
     computed: {
         ...mapState({
             place: state => state.menu.place,
-            items: state => state.menu.items
+            categories: state => state.menu.categories
         })
     }
 };

@@ -1,4 +1,4 @@
 export default {
     place: {},
-    items: {}
+    categories: {}
 };

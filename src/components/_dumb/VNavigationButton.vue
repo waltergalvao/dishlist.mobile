@@ -6,6 +6,6 @@
 
 <script>
 export default {
-    name: "VNavigationMenu"
+    name: "NavigationMenu"
 };
 </script>
