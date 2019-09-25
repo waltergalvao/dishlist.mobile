@@ -1,21 +1,23 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar>
-        <v-navigation-menu @click.native="leftDrawerOpen = !leftDrawerOpen" />
+    <q-layout view="lHh Lpr lFf">
+        <q-header elevated>
+            <q-toolbar>
+                <v-navigation-menu
+                    @click.native="leftDrawerOpen = !leftDrawerOpen"
+                />
 
-        <q-toolbar-title>
-          DishList
-        </q-toolbar-title>
-      </q-toolbar>
-    </q-header>
+                <q-toolbar-title>
+                    DishList
+                </q-toolbar-title>
+            </q-toolbar>
+        </q-header>
 
-    <the-navigation-drawer :is-open="leftDrawerOpen" />
+        <the-navigation-drawer :is-open="leftDrawerOpen" />
 
-    <q-page-container>
-      <router-view/>
-    </q-page-container>
-  </q-layout>
+        <q-page-container>
+            <router-view />
+        </q-page-container>
+    </q-layout>
 </template>
 
 <script>
@@ -23,12 +25,12 @@ import TheNavigationDrawer from "../components/TheNavigationDrawer";
 import VNavigationMenu from "../components/_dumb/VNavigationButton";
 
 export default {
-  name: "Default",
-  components: { VNavigationMenu, TheNavigationDrawer },
-  data() {
-    return {
-      leftDrawerOpen: false
-    };
-  }
+    name: "Default",
+    components: { VNavigationMenu, TheNavigationDrawer },
+    data() {
+        return {
+            leftDrawerOpen: false
+        };
+    }
 };
 </script>

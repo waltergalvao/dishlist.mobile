@@ -1,0 +1,38 @@
+{
+  "place": {
+    "id": "6eec5eb6-9755-11e4-b981-feb7b39d48d6",
+    "name": "Veggie Bowl",
+    "description": "This restaurant was funded in 1995, and today is the most famous vegan restaurant of British Columbia.",
+    "website": "http://www.veggiebowl.ca"
+  },
+  "items": [
+    {
+      "id": "6eec5eb6-9755-11e4-b981-feb7b39d48d6",
+      "name": "Phò / Vegetarian Pho",
+      "short_description": "Rice noodles, five specide broth, vegan ham",
+      "thumbnail": "https://144f2a3a2f948f23fc61-ca525f0a2beaec3e91ca498facd51f15.ssl.cf3.rackcdn.com/uploads/food_portal_data/recipes/recipe/hero_article_image/2887/letterbox_Vegetarian-pho-with-tofu-2-593.jpg",
+      "category": {
+        "id": 1,
+        "name": "Main"
+      },
+      "rating": 5,
+      "price": 23.20,
+      "average_time": "00:30",
+      "tags": ["Vegetarian", "Spicy"]
+    },
+    {
+      "id": "6eec5eb6-9755-11e4-b981-feb7b39d48d6",
+      "name": "Coke Can",
+      "short_description": "355ml",
+      "thumbnail": "https://cdn.shopify.com/s/files/1/1792/9017/products/can-001-coke-can-safe-coke-1.485.jpg?v=1496418495",
+      "category": {
+        "id": 10,
+        "name": "Beverages"
+      },
+      "rating": 5,
+      "price": 1.30,
+      "average_time": "00:30",
+      "tags": ["Vegetarian", "Spicy"]
+    }
+  ]
+}
