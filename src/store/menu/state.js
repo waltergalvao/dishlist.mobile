@@ -1,7 +1,4 @@
 export default {
-    menu: {
-        restaurant: {},
-        categories: {},
-        items: {}
-    }
+    place: {},
+    items: {}
 };

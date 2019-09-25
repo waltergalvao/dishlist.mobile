@@ -7,7 +7,6 @@ module.exports = function (ctx) {
     // --> boot files are part of "main.js"
     boot: [
       'axios',
-      'vuex',
     ],
 
     css: [

@@ -1,23 +1,17 @@
 <template>
     <q-page>
-        <div class="q-pa-md bg-grey-2" v-if="restaurant">
+        <div class="q-pa-md bg-grey-2" v-if="place">
             <div class="row">
                 <div class="col">
                     <q-card flat class="bg-grey-2" ref="placeDescription">
-                        <div class="text-h6">Xpto</div>
-                        <div class="text-subtitle3">
-                            Lorem Ipsum is simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text ever since the 1500s,
-                            when an unknown printer took a galley of type and
-                            scrambled it to make a type specimen book.
-                        </div>
+                        <div class="text-h6">{{ place.name }}</div>
+                        <div class="text-subtitle3">{{ place.description }}</div>
                     </q-card>
                 </div>
             </div>
         </div>
 
-        <q-tabs class="text-accent" stretch :value="null" v-if="categories">
+        <q-tabs class="text-accent" stretch :value="null">
             <q-tab label="Appetizers" />
             <q-tab label="Salads" />
             <q-tab label="Steaks" />
@@ -32,30 +26,9 @@
         <div class="q-pa-sm" v-if="items">
             <q-list>
                 <q-item-label header>Top 3 Dishes</q-item-label>
-
-                <menu-item></menu-item>
-                <menu-item></menu-item>
-                <menu-item></menu-item>
-
-                <q-item-label header>Salads</q-item-label>
-                <menu-item></menu-item>
-                <menu-item></menu-item>
-                <menu-item></menu-item>
-                <menu-item></menu-item>
-                <menu-item></menu-item>
-
-                <q-item-label header>Steaks</q-item-label>
-                <menu-item></menu-item>
-                <menu-item></menu-item>
-                <menu-item></menu-item>
-                <menu-item></menu-item>
-                <menu-item></menu-item>
-                <menu-item></menu-item>
-
-                <q-item-label header>Beverages</q-item-label>
-                <menu-item></menu-item>
-                <menu-item></menu-item>
-                <menu-item></menu-item>
+                <template v-for="(item, key) in items">
+                    <menu-item :item="item" :key="key"/>
+                </template>
             </q-list>
         </div>
     </q-page>
@@ -83,8 +56,7 @@ export default {
     },
     computed: {
         ...mapState({
-            restaurant: state => state.menu.movies,
-            categories: state => state.menu.categories,
+            place: state => state.menu.place,
             items: state => state.menu.items
         })
     }

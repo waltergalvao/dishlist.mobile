@@ -2,5 +2,5 @@ import Vue from "vue";
 import axios from "axios";
 
 Vue.prototype.$axios = axios.create({
-    baseURL: "http://localhost/statics/api/menu.json  "
+    baseURL: "http://localhost/statics/api/"
 });

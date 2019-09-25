@@ -1,27 +1,22 @@
-<script src="../../../../../tray/spa/src/vuex/modules/ticket.js"></script>
 <template>
     <div>
         <q-item>
             <q-item-section avatar>
                 <q-avatar rounded>
-                    <img
-                        src="https://images2.minutemediacdn.com/image/upload/c_crop,h_1126,w_2000,x_0,y_181/f_auto,q_auto,w_1100/v1554932288/shape/mentalfloss/12531-istock-637790866.jpg"
-                    />
+                    <img :src="item.thumbnail"/>
                 </q-avatar>
             </q-item-section>
             <q-item-section>
                 <div class="row">
                     <div class="col">
-                        <q-item-label>Dish Name</q-item-label>
+                        <q-item-label>{{ item.name }}</q-item-label>
                     </div>
                     <div class="col">
-                        <q-rating :value="3" size="1.5em" readonly />
+                        <q-rating :value="item.rating" size="1.5em" readonly />
                     </div>
                 </div>
                 <q-item-label caption
-                    >O hambúrguer (do inglês hamburger), também conhecido como
-                    hamburgo e hamburguesa, sanduíche de carne é carne
-                    (principalmente de carne bovina, mas também de frango moído.
+                    >{{ item.short_description }}
                 </q-item-label>
 
                 <q-item-section class="block">
@@ -48,9 +43,9 @@
 export default {
     name: "DishItem",
     props: {
-        image: {
-            type: String,
-            required: false
+        item: {
+            type: Object,
+            required: true
         }
     }
 };
