@@ -1,6 +1,6 @@
-import Vue from "vue";
-import axios from "axios";
+import Vue from 'vue';
+import axios from 'axios';
 
 Vue.prototype.$axios = axios.create({
-    baseURL: "http://localhost/statics/api/"
+    baseURL: 'http://localhost/statics/api/',
 });

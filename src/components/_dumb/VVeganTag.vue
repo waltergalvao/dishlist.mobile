@@ -13,6 +13,6 @@
 
 <script>
 export default {
-    name: "VeganTag"
+    name: 'VeganTag',
 };
 </script>

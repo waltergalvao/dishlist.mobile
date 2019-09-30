@@ -6,6 +6,6 @@
 
 <script>
 export default {
-    name: "AverageTime"
+    name: 'AverageTime',
 };
 </script>

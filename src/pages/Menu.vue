@@ -1,36 +1,23 @@
 <template>
     <q-page>
-        <div class="q-pa-md bg-grey-2" v-if="place">
-            <div class="row">
-                <div class="col">
-                    <q-card flat class="bg-grey-2" ref="placeDescription">
-                        <div class="text-h6">{{ place.name }}</div>
-                        <div class="text-subtitle3">
-                            {{ place.description }}
-                        </div>
-                    </q-card>
-                </div>
-            </div>
-        </div>
-
         <q-tabs class="text-accent" stretch :value="null">
             <q-tab
-                v-for="(category, key) in categories"
+                v-for="(category, categoryKey) in categories"
                 :label="category.name"
-                :key="key"
+                :key="'category' + categoryKey"
             />
         </q-tabs>
 
         <div class="q-pa-sm" v-if="categories">
             <q-list>
                 <template v-for="(category, key) in categories">
-                    <q-item-label header :key="key">{{
+                    <q-item-label header :key="'label' + key">{{
                         category.name
                     }}</q-item-label>
                     <menu-item
-                        v-for="(item, key) in category.items"
+                        v-for="item in category.items"
                         :item="item"
-                        :key="key"
+                        :key="item.id"
                     />
                 </template>
             </q-list>
@@ -39,15 +26,15 @@
 </template>
 
 <script>
-import MenuItem from "../components/MenuItem";
-import { mapActions, mapState } from "vuex";
+import MenuItem from '../components/MenuItem';
+import {mapActions, mapState} from 'vuex';
 export default {
-    name: "PageIndex",
-    components: { MenuItem },
+    name: 'PageIndex',
+    components: {MenuItem},
     data() {
         return {
             filter: null,
-            toggle: false
+            toggle: false,
         };
     },
     created() {
@@ -55,15 +42,15 @@ export default {
     },
     methods: {
         ...mapActions({
-            fetchMenu: "fetchMenu"
-        })
+            fetchMenu: 'fetchMenu',
+        }),
     },
     computed: {
         ...mapState({
             place: state => state.menu.place,
-            categories: state => state.menu.categories
-        })
-    }
+            categories: state => state.menu.categories,
+        }),
+    },
 };
 </script>
 

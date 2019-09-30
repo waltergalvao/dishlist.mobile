@@ -13,6 +13,6 @@
 
 <script>
 export default {
-    name: "SpicyTag"
+    name: 'SpicyTag',
 };
 </script>

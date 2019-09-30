@@ -39,20 +39,20 @@
 </template>
 
 <script>
-import SpicyTag from "./_dumb/VSpicyTag";
-import VeganTag from "./_dumb/VVeganTag";
-import VegetarianTag from "./_dumb/VVegetarianTag";
-import AverageTime from "./_dumb/VAverageTime";
+import SpicyTag from './_dumb/VSpicyTag';
+import VeganTag from './_dumb/VVeganTag';
+import VegetarianTag from './_dumb/VVegetarianTag';
+import AverageTime from './_dumb/VAverageTime';
 
 export default {
-    name: "DishItem",
-    components: { AverageTime, VegetarianTag, VeganTag, SpicyTag },
+    name: 'DishItem',
+    components: {AverageTime, VegetarianTag, VeganTag, SpicyTag},
     props: {
         item: {
             type: Object,
-            required: true
-        }
-    }
+            required: true,
+        },
+    },
 };
 </script>
 

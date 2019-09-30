@@ -17,20 +17,23 @@
         <q-page-container>
             <router-view />
         </q-page-container>
+
+        <place-navigation />
     </q-layout>
 </template>
 
 <script>
-import TheNavigationDrawer from "../components/TheNavigationDrawer";
-import VNavigationMenu from "../components/_dumb/VNavigationButton";
+import TheNavigationDrawer from '../components/TheNavigationDrawer';
+import VNavigationMenu from '../components/_dumb/VNavigationButton';
+import PlaceNavigation from '../components/_dumb/VPlaceNavigation';
 
 export default {
-    name: "Default",
-    components: { VNavigationMenu, TheNavigationDrawer },
+    name: 'Default',
+    components: {PlaceNavigation, VNavigationMenu, TheNavigationDrawer},
     data() {
         return {
-            leftDrawerOpen: false
+            leftDrawerOpen: false,
         };
-    }
+    },
 };
 </script>

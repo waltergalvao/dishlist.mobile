@@ -89,12 +89,12 @@
 
 <script>
 export default {
-    name: "TheNavigationDrawer",
+    name: 'TheNavigationDrawer',
     props: {
         isOpen: {
             type: Boolean,
-            default: false
-        }
-    }
+            default: false,
+        },
+    },
 };
 </script>
