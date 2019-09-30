@@ -7,7 +7,7 @@
                 />
 
                 <q-toolbar-title>
-                    DishList
+                    {{ title }}
                 </q-toolbar-title>
             </q-toolbar>
         </q-header>
@@ -15,7 +15,7 @@
         <the-navigation-drawer :is-open="leftDrawerOpen" />
 
         <q-page-container>
-            <router-view />
+            <router-view @updateTitle="updateTitle"/>
         </q-page-container>
 
         <place-navigation />
@@ -33,7 +33,13 @@ export default {
     data() {
         return {
             leftDrawerOpen: false,
+            title: 'DishList',
         };
     },
+    methods: {
+        updateTitle(value) {
+            this.title = value;
+        }
+    }
 };
 </script>

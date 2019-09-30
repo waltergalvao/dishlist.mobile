@@ -1,12 +1,6 @@
 <template>
-    <q-page>
-        <q-tabs class="text-accent" stretch :value="null">
-            <q-tab
-                v-for="(category, categoryKey) in categories"
-                :label="category.name"
-                :key="'category' + categoryKey"
-            />
-        </q-tabs>
+    <q-page class="menu">
+        <menu-options/>
 
         <div class="q-pa-sm" v-if="categories">
             <q-list>
@@ -28,17 +22,19 @@
 <script>
 import MenuItem from '../components/MenuItem';
 import {mapActions, mapState} from 'vuex';
+import MenuOptions from "../components/MenuOptions";
 export default {
     name: 'PageIndex',
-    components: {MenuItem},
+    components: {MenuOptions, MenuItem},
     data() {
         return {
             filter: null,
             toggle: false,
         };
     },
-    created() {
-        this.fetchMenu();
+    async created() {
+        await this.fetchMenu();
+        this.$emit('updateTitle', this.place.name)
     },
     methods: {
         ...mapActions({
@@ -58,4 +54,8 @@ export default {
 .q-page-sticky {
     z-index: 5000;
 }
+
+    .menu {
+        padding: 0 0 40px 0;
+    }
 </style>
