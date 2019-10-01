@@ -1,8 +1,8 @@
 <template>
     <div>
-        <q-item class="item" clickable v-ripple>
+        <q-item class="item" clickable v-ripple >
             <q-item-section thumbnail>
-                <img :src="item.thumbnail" />
+                <img :src="item.thumbnail" class="item__thumbnail"/>
             </q-item-section>
             <q-item-section>
                 <div class="row">
@@ -14,19 +14,31 @@
                     </div>
                 </div>
 
-                <q-rating
-                    :value="item.rating"
-                    icon="star_border"
-                    icon-selected="star"
-                    style="margin-top: 5px;"
-                />
-
                 <q-item-label caption class="item__description"
                     >{{ item.short_description }}
                 </q-item-label>
 
                 <q-item-section class="block item__tags">
-                    <average-time> {{ item.average_time }} min </average-time>
+                    <q-chip
+                        outline
+                        class="no-border"
+                        color="orange"
+                        text-color="white"
+                        dense
+                        icon="star"
+                    >
+                        {{ item.rating }}
+                    </q-chip>
+
+                    <q-chip
+                        outline
+                        class="no-border"
+                        dense
+                        icon="group"
+                    >
+                        2
+                    </q-chip>
+
                     <spicy-tag v-if="item.is_spicy" />
                     <vegan-tag v-if="item.is_vegan" />
                     <vegetarian-tag v-else-if="item.is_vegetarian" />
@@ -42,11 +54,10 @@
 import SpicyTag from './_dumb/VSpicyTag';
 import VeganTag from './_dumb/VVeganTag';
 import VegetarianTag from './_dumb/VVegetarianTag';
-import AverageTime from './_dumb/VAverageTime';
 
 export default {
     name: 'DishItem',
-    components: {AverageTime, VegetarianTag, VeganTag, SpicyTag},
+    components: {VegetarianTag, VeganTag, SpicyTag},
     props: {
         item: {
             type: Object,
@@ -58,12 +69,18 @@ export default {
 
 <style lang="scss">
 .item {
+    align-items: center;
+
     &__tags {
         margin-top: 10px;
     }
 
     &__description {
         margin-top: 10px;
+    }
+
+    &__thumbnail {
+        border-radius: 50% !important;
     }
 }
 

@@ -5,7 +5,6 @@
         color="primary"
         text-color="white"
         dense
-        icon="whatshot"
     >
         Spicy
     </q-chip>

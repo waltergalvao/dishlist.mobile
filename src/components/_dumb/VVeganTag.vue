@@ -5,7 +5,6 @@
         color="orange"
         text-color="white"
         dense
-        icon="local_florist"
     >
         Vegan
     </q-chip>

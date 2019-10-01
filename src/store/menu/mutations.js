@@ -4,6 +4,7 @@ export default {
     [SET_MENU]: (state, menu) => {
         state.place = menu.place;
         state.categories = menu.categories;
+        state.featuredItems = menu.featured;
         return state;
     },
 };

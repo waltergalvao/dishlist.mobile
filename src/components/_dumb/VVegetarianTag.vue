@@ -1,12 +1,5 @@
 <template>
-    <q-chip
-        outline
-        class="no-border"
-        color="green"
-        text-color="white"
-        dense
-        icon="wb_sunny"
-    >
+    <q-chip outline class="no-border" color="green" text-color="white" dense>
         Vegetarian
     </q-chip>
 </template>

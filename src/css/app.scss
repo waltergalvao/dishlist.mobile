@@ -1,1 +1,7 @@
-// app global css in SCSS form
+
+.q-drawer--on-top {
+    z-index: 10000000 !important;
+}
+.fullscreen {
+    z-index: 1000000 !important;
+}

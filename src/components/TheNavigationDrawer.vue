@@ -1,5 +1,5 @@
 <template>
-    <q-drawer :value="isOpen" elevated>
+    <q-drawer :value="isOpen" elevated class="drawer">
         <q-list>
             <q-item-label header>Essential Links</q-item-label>
             <q-item clickable tag="a" target="_blank" href="https://quasar.dev">
@@ -98,3 +98,6 @@ export default {
     },
 };
 </script>
+
+<style lang="scss" scoped>
+</style>

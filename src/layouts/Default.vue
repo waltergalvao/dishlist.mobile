@@ -15,7 +15,7 @@
         <the-navigation-drawer :is-open="leftDrawerOpen" />
 
         <q-page-container>
-            <router-view @updateTitle="updateTitle"/>
+            <router-view @updateTitle="updateTitle" />
         </q-page-container>
 
         <place-navigation />
@@ -39,7 +39,7 @@ export default {
     methods: {
         updateTitle(value) {
             this.title = value;
-        }
-    }
+        },
+    },
 };
 </script>

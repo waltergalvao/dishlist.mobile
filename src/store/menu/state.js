@@ -1,4 +1,5 @@
 export default {
     place: {},
-    categories: {},
+    categories: [],
+    featuredItems: [],
 };
