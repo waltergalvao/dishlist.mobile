@@ -8,8 +8,12 @@ const routes = [
                 component: () => import('pages/Index.vue'),
             },
             {
-                path: 'place/xpto/menu',
+                path: 'place/:placeName/menu',
                 component: () => import('pages/Menu.vue'),
+            },
+            {
+                path: 'place/:placeName/dish/',
+                component: () => import('pages/Dish.vue'),
             },
         ],
     },

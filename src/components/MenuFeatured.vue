@@ -6,6 +6,8 @@
             v-model="currentSlide"
             height="250px"
             class="featured"
+            swipeable
+            infinite
         >
             <q-carousel-slide
                 v-for="(item, key) in featuredItems"

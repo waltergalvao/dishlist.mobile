@@ -1,12 +1,12 @@
 {
-  "id": "6eec5eb6-9755-11e4-b981-feb7b39d48d6",
+  "id": 1,
   "name": "Phò / Vegetarian Pho",
   "description": "Rice noodles, five spiced broth, vegan ham, ginger in broth, assorted tofu, broccoli, lotus root, zucchini, snap peas, enoki mushrooms, carrots, cauliflower",
   "short_description": "Rice noodles, five specide broth, vegan ham",
   "price": 10.5,
   "photos": [
     "https://cookieandkate.com/images/2017/01/vegetarian-pho-2.jpg",
-    "https://cookieandkate.com/images/2017/01/vegetarian-pho-2.jpg"
+    "http://myhealthydish.com/wp-content/uploads/2018/01/vegetable-pho.jpg"
   ],
   "rating": 5,
   "average_time": "00:30",
