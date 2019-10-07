@@ -15,6 +15,10 @@ const routes = [
                 path: 'place/:placeName/dish/',
                 component: () => import('pages/Dish.vue'),
             },
+            {
+                path: 'place/:placeName/searchRestaurant/',
+                component: () => import('pages/SearchRestaurant.vue'),
+            },
         ],
     },
 ];
