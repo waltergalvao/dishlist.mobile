@@ -8,7 +8,11 @@
 
         <div class="fixed-center">
 
+                <div id="qrCode" width="90%">
+                    
+                    <img v-on:click="scanQRcode" src="../statics/icons/qr-code.png" width="80%">
                 
+                </div>
 
                 <q-btn @click="scanQRcode()" :dense="$q.screen.xs" no-caps label="Scan QR Code" icon-right="img:statics/icons/qr-code.svg" color="secondary" class="setWidth" text-color="color:rgba(0, 0, 0, 0.6)">
 
@@ -16,11 +20,7 @@
 
                 <br><br>OR<br>
 
-                 <q-input v-model="restaurantName"  label="Restaurant Name.."  class="setWidth">
-                        <template v-slot:append>
-                            <q-icon name="search" />
-                        </template>
-                </q-input>
+                
 
                 <br>
                 
@@ -35,50 +35,69 @@
 
 <script>
     import {mapActions, mapState} from 'vuex';
+    
+    //import dishlistApiRequests from '../boot/axios';
+    
+    
     export default {
+    
     data(){
         return{
-                restaurantName:''
+                restaurantId : 1,
+                restaurantList:[]
+
              }
         },
     
     name: 'Restaurant',
     
     async created() {
-        await this.fetchRestaurant();
+       // await this.fetchRestaurant();
+       
+     
         
     },
    
     methods: {
         ...mapActions({
-            fetchRestaurant: 'fetchRestaurant',
+            SearchMenu: 'SearchMenu',
         }),
         searchRestaurant(){
             this.$router.push("/place/:placeName/menu")
 
         },
 
-        scanQRcode(){
 
+
+        
+
+        scanQRcode(){
+           
+            this.$store.dispatch('SearchMenu',{
+           'restaurantId': this.restaurantId
+       })
+
+          
         }
     },
     computed: {
         ...mapState({
+            featuredItems: state => state.menu.featuredItems,
+            place: state => state.menu.place,
+            categories: state => state.menu.categories,
         }),
     },
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
     #searchRestaurantScreen{
         text-align: center;
         height: 1vh;
         background-color:white;
     }
   
-  #scanQRBtn{
-      color:rgba(0, 0, 0, 0.6)
-  }
+ 
     
 .setWidth{
     width: 100%;
