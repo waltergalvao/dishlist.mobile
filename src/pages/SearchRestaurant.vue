@@ -1,84 +1,83 @@
+
 <template>
-    <q-page id="searchRestaurantScreen" >
-
-        <img src="~assets/bg-search-screen.jpg"
-        style="height: 100%; opacity: 0.8; ">
-       
-        
-
+    <q-page id="searchRestaurantScreen">
         <div class="fixed-center">
+            <span>To open the Menu</span>
+            <br />
+            <br />
 
-                <div id="qrCode" width="90%">
-                    
-                    <img v-on:click="scanQRcode" src="../statics/icons/qr-code.png" width="80%">
-                
-                </div>
+            <q-img
+                id="qrCode"
+                v-on:click="scanQRcode"
+                src="~assets/qr-code.png"
+                style="width: 100%"
+            >
+                <div class="absolute-bottom text-subtitle1 text-center q-pa-xs">Scan QR Code</div>
+            </q-img>
 
-                <q-btn @click="scanQRcode()" :dense="$q.screen.xs" no-caps label="Scan QR Code" icon-right="img:statics/icons/qr-code.svg" color="secondary" class="setWidth" text-color="color:rgba(0, 0, 0, 0.6)">
+            <br />
+            <br />
+            <br />Or
+            <br />To search restaurant by name
+            <span
+                class="linkText"
+                v-on:click="SearchRestaurantByName"
+            >Click Here</span>
 
-                </q-btn>
-
-                <br><br>OR<br>
-
-                
-
-                <br>
-                
-                 <q-btn @click="searchRestaurant()" width="60%" :dense="$q.screen.xs" no-caps label="Search"  color="secondary"  text-color="color:rgba(0, 0, 0, 0.6)">
-
-                </q-btn>
-                
-      
-        </div>   
+            <br />
+            <span v-on:click="pratice">scan</span>
+        </div>
     </q-page>
 </template>
 
 <script>
-    import {mapActions, mapState} from 'vuex';
-    
-    //import dishlistApiRequests from '../boot/axios';
-    
-    
-    export default {
-    
-    data(){
-        return{
-                restaurantId : 1,
-                restaurantList:[]
+import {mapActions, mapState} from 'vuex';
 
-             }
-        },
-    
-    name: 'Restaurant',
-    
-    async created() {
-       // await this.fetchRestaurant();
-       
-     
-        
+export default {
+    data() {
+        return {
+            restaurantId: 1,
+            restaurantList: [],
+        };
     },
-   
+
+    name: 'Restaurant',
+
+    async created() {
+        // this.restaurantList = this.$store.state.restaurant;
+    },
+
     methods: {
         ...mapActions({
             SearchMenu: 'SearchMenu',
         }),
-        searchRestaurant(){
-            this.$router.push("/place/:placeName/menu")
 
+        scanQRcode() { //add practice code here when the image import works
+            this.$store.dispatch('SearchMenu', {
+                restaurantId: this.restaurantId,
+            });
+            this.$router.push('/place/:placeName/menu');
         },
 
+        SearchRestaurantByName() {
+            this.$router.push('/place/:placeName/RestaurantSearchList');
+        },
 
+        pratice() {
+            let vueMethodsObj = this;
+            cordova.plugins.barcodeScanner.scan(function(result) {
+                console.log(result);
+                vueMethodsObj.$store.dispatch('SearchMenu', {
+                    restaurantId: result.text,
+                });
+                vueMethodsObj.$router.push('/place/:placeName/menu');
+            });
 
-        
-
-        scanQRcode(){
-           
-            this.$store.dispatch('SearchMenu',{
-           'restaurantId': this.restaurantId
-       })
-
-          
-        }
+            // this.$store.dispatch('SearchMenu', {
+            //     restaurantId: this.restaurantId,
+            // });
+            // this.$router.push('/place/:placeName/menu');
+        },
     },
     computed: {
         ...mapState({
@@ -91,24 +90,25 @@
 </script>
 
 <style lang="scss">
-    #searchRestaurantScreen{
-        text-align: center;
-        height: 1vh;
-        background-color:white;
-    }
-  
- 
-    
-.setWidth{
+.linkText {
+    color: blue;
+    text-decoration: underline;
+}
+
+#searchRestaurantScreen {
+    text-align: center;
+    height: 1vh;
+    background-color: white;
+}
+
+.setWidth {
     width: 100%;
     font-weight: strong;
 }
 
-.fixed-center{
-    width: 80%;
-    position:absolute;
-    z-index:999;
+.fixed-center {
+    width: 70%;
+    position: absolute;
+    z-index: 999;
 }
-    
-
 </style>
