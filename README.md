@@ -14,6 +14,8 @@ You need Docker to run this application.
 
 4: Run `npm install` to install the packages
 
+5: Duplicate `.env.example`, renaming it to `.env`. You can change the configuration if needed.
+
 ---
 
 #### Running the application
