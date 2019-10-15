@@ -8,12 +8,18 @@ const routes = [
                 component: () => import('pages/Index.vue'),
             },
             {
+                name: 'place.menu',
                 path: 'place/:placeName/menu',
                 component: () => import('pages/Menu.vue'),
             },
             {
+                name: 'place.menu.dish',
                 path: 'place/:placeName/dish/',
                 component: () => import('pages/Dish.vue'),
+                meta: {
+                    showBackButton: true,
+                    showNavigation: false,
+                },
             },
             {
                 path: 'place/:placeName/searchRestaurant/',

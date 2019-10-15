@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <router-link :to="'/place/xpto/dish'" tag="div">
         <q-item class="item" clickable v-ripple >
             <q-item-section thumbnail>
                 <img :src="item.thumbnail" class="item__thumbnail"/>
@@ -19,26 +19,8 @@
                 </q-item-label>
 
                 <q-item-section class="block item__tags">
-                    <q-chip
-                        outline
-                        class="no-border"
-                        color="orange"
-                        text-color="white"
-                        dense
-                        icon="star"
-                    >
-                        {{ item.rating }}
-                    </q-chip>
-
-                    <q-chip
-                        outline
-                        class="no-border"
-                        dense
-                        icon="group"
-                    >
-                        2
-                    </q-chip>
-
+                    <rating>{{ item.rating }}</rating>
+                    <group-dish>2</group-dish>
                     <spicy-tag v-if="item.is_spicy" />
                     <vegan-tag v-if="item.is_vegan" />
                     <vegetarian-tag v-else-if="item.is_vegetarian" />
@@ -47,17 +29,19 @@
         </q-item>
 
         <q-separator />
-    </div>
+    </router-link>
 </template>
 
 <script>
 import SpicyTag from './_dumb/VSpicyTag';
 import VeganTag from './_dumb/VVeganTag';
 import VegetarianTag from './_dumb/VVegetarianTag';
+import Rating from "./_dumb/VRating";
+import GroupDish from "./_dumb/VGroupDish";
 
 export default {
     name: 'DishItem',
-    components: {VegetarianTag, VeganTag, SpicyTag},
+    components: {GroupDish, Rating, VegetarianTag, VeganTag, SpicyTag},
     props: {
         item: {
             type: Object,

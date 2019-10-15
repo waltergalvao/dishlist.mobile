@@ -1,6 +1,6 @@
 <template>
     <q-page class="dish" v-if="dish">
-        <dish-header :photos="dish.photos" :dish-name="dish.name"/>
+        <dish-header :photos="dish.photos" :dish-name="dish.name" :rating="dish.rating"/>
 
 
         <q-tabs
@@ -18,7 +18,7 @@
 
         <q-tab-panels v-model="tab" animated class="">
             <q-tab-panel name="details">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                <dish-details :dish="dish"/>
             </q-tab-panel>
 
             <q-tab-panel name="reviews">
@@ -43,13 +43,14 @@
 <script>
 import {mapActions, mapState} from 'vuex';
 import DishHeader from "../components/DishHeader";
+import DishDetails from "../components/DishDetails";
 
 export default {
     name: 'Dish',
-    components: {DishHeader},
+    components: {DishDetails, DishHeader},
     async created() {
         await this.fetchDish();
-        this.$emit('updateTitle', this.place.name);
+        this.$emit('updateBackRoute', { path: '/place/xpto/menu'});
     },
     data() {
         return {
