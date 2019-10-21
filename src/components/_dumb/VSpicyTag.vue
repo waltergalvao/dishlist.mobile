@@ -1,11 +1,5 @@
 <template>
-    <q-chip
-        outline
-        class="no-border"
-        color="primary"
-        text-color="white"
-        dense
-    >
+    <q-chip outline class="no-border" color="primary" text-color="white" dense>
         Spicy
     </q-chip>
 </template>

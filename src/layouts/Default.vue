@@ -6,7 +6,11 @@
                     v-if="showNavigation"
                     @click.native="leftDrawerOpen = !leftDrawerOpen"
                 />
-                <back-button :to="backRoute" v-if="showBackButton" @click="goBack"/>
+                <back-button
+                    :to="backRoute"
+                    v-if="showBackButton"
+                    @click="goBack"
+                />
 
                 <q-toolbar-title>
                     {{ title }}
@@ -17,16 +21,18 @@
         <the-navigation-drawer :is-open="leftDrawerOpen" />
 
         <q-page-container>
-            <router-view @updateTitle="updateTitle" @updateBackRoute="updateBackRoute"/>
+            <router-view
+                @updateTitle="updateTitle"
+                @updateBackRoute="updateBackRoute"
+            />
         </q-page-container>
-
     </q-layout>
 </template>
 
 <script>
 import TheNavigationDrawer from '../components/TheNavigationDrawer';
 import VNavigationMenu from '../components/_dumb/VNavigationButton';
-import BackButton from "../components/_dumb/VBackButton";
+import BackButton from '../components/_dumb/VBackButton';
 
 export default {
     name: 'Default',

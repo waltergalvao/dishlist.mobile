@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import Rating from "./_dumb/VRating";
+import Rating from './_dumb/VRating';
 export default {
     name: 'DishHeader',
     components: {Rating},
@@ -46,8 +46,8 @@ export default {
         },
         dishName: {
             type: String,
-            required: true
-        }
+            required: true,
+        },
     },
 };
 </script>

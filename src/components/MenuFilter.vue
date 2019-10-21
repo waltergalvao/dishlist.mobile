@@ -15,34 +15,34 @@
 </template>
 
 <script>
-    export default {
-        name: 'MenuFilter',
-        data() {
-            return {
-                showFilter: false
+export default {
+    name: 'MenuFilter',
+    data() {
+        return {
+            showFilter: false,
+        };
+    },
+    created() {
+        document.addEventListener('scroll', this.handleScroll);
+    },
+    destroyed() {
+        document.removeEventListener('scroll', this.handleScroll);
+    },
+    methods: {
+        handleScroll() {
+            if (window.pageYOffset > 100) {
+                this.showFilter = true;
+            } else {
+                this.showFilter = false;
             }
         },
-        created() {
-            document.addEventListener('scroll', this.handleScroll);
-        },
-        destroyed() {
-            document.removeEventListener('scroll', this.handleScroll);
-        },
-        methods: {
-            handleScroll() {
-                if (window.pageYOffset > 100) {
-                    this.showFilter = true;
-                } else {
-                    this.showFilter = false;
-                }
-            }
-        }
-    };
+    },
+};
 </script>
 
 <style scoped lang="scss">
-    .options {
-        width: 100vw;
-        padding: 10px;
-    }
+.options {
+    width: 100vw;
+    padding: 10px;
+}
 </style>

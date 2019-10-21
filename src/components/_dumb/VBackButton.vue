@@ -1,5 +1,5 @@
 <template>
-    <q-btn :to="to" flat icon="arrow_back_ios" class="back" :ripple="false"/>
+    <q-btn :to="to" flat icon="arrow_back_ios" class="back" :ripple="false" />
 </template>
 
 <script>
@@ -8,7 +8,7 @@ export default {
     props: {
         to: {
             type: Object,
-            required: true
+            required: true,
         },
     },
 };

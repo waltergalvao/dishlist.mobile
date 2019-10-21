@@ -7,7 +7,7 @@
         dense
         icon="star"
     >
-        <slot/>
+        <slot />
     </q-chip>
 </template>
 

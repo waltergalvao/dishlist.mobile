@@ -1,8 +1,14 @@
 <template>
-    <router-link :to="{ name: 'restaurant.menu.dish', params: { restaurantId: restaurant.id, dishId: item.id } }" tag="div">
-        <q-item class="item" clickable v-ripple >
+    <router-link
+        :to="{
+            name: 'restaurant.menu.dish',
+            params: {restaurantId: restaurant.id, dishId: item.id},
+        }"
+        tag="div"
+    >
+        <q-item class="item" clickable v-ripple>
             <q-item-section thumbnail>
-                <img :src="item.thumbnail" class="item__thumbnail"/>
+                <img :src="item.thumbnail" class="item__thumbnail" />
             </q-item-section>
             <q-item-section>
                 <div class="row">
@@ -36,8 +42,8 @@
 import SpicyTag from './_dumb/VSpicyTag';
 import VeganTag from './_dumb/VVeganTag';
 import VegetarianTag from './_dumb/VVegetarianTag';
-import Rating from "./_dumb/VRating";
-import GroupDish from "./_dumb/VGroupDish";
+import Rating from './_dumb/VRating';
+import GroupDish from './_dumb/VGroupDish';
 
 export default {
     name: 'DishItem',
