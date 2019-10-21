@@ -8,21 +8,27 @@ const routes = [
                 component: () => import('pages/Index.vue'),
             },
             {
-                path: 'place/:placeName/menu',
+                name: 'restaurant.menu',
+                path: 'restaurant/:restaurantId/menu',
                 component: () => import('pages/Menu.vue'),
             },
             {
-                path: 'place/:placeName/dish/',
+                name: 'restaurant.menu.dish',
+                path: 'restaurant/:restaurantId/dish/:dishId',
                 component: () => import('pages/Dish.vue'),
+                meta: {
+                    showBackButton: true,
+                    showNavigation: false,
+                },
             },
             {
-                path: 'place/:placeName/searchRestaurant/',
+                path: 'restaurant/search/',
                 component: () => import('pages/SearchRestaurant.vue'),
             },
             {
-                path: 'place/:placeName/RestaurantSearchList/',
-                component: () => import('pages/RestaurantSearchList.vue')
-            }
+                path: 'restaurant/:placeName/restaurantSearchList/',
+                component: () => import('pages/RestaurantSearchList.vue'),
+            },
         ],
     },
 ];

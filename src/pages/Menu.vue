@@ -36,6 +36,7 @@
                     <menu-item
                         v-for="item in category.items"
                         :item="item"
+                        :restaurant="place"
                         :key="item.id"
                     />
                 </div>
@@ -62,7 +63,7 @@ export default {
         };
     },
     async created() {
-        await this.fetchMenu();
+        await this.fetchMenu(this.$route.params.restaurantId); // @TODO Change for id found in route
         this.$emit('updateTitle', this.place.name);
         this.currentCategory = 'category-' + this.categories[0].id;
         document.addEventListener('scroll', this.handleScroll);

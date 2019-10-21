@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import menu from '../store/menu/index';
 import dish from '../store/dish/index';
 import restaurant from '../store/restaurant/index';
+import review from '../store/review/index';
 
 Vue.use(Vuex);
 
@@ -12,6 +13,7 @@ export default function(/* { ssrContext } */) {
             menu,
             dish,
             restaurant,
+            review,
         },
 
         // enable strict mode (adds overhead!)

@@ -1,14 +1,12 @@
 <template>
     <q-page class="dish" v-if="dish">
-        <dish-header :photos="dish.photos" :dish-name="dish.name"/>
+        <dish-header
+            :photos="dish.photos"
+            :dish-name="dish.name"
+            :rating="dish.rating"
+        />
 
-
-        <q-tabs
-            v-model="tab"
-            class=""
-            align="justify"
-            narrow-indicator
-        >
+        <q-tabs v-model="tab" class="" align="justify" narrow-indicator>
             <q-tab name="details" label="Details" />
             <q-tab name="reviews" label="Reviews" />
             <q-tab name="photos" label="Photos" />
@@ -18,16 +16,17 @@
 
         <q-tab-panels v-model="tab" animated class="">
             <q-tab-panel name="details">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                <dish-details :dish="dish" />
             </q-tab-panel>
 
             <q-tab-panel name="reviews">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                <dish-review-list :dish="dish" />
             </q-tab-panel>
 
             <q-tab-panel name="photos" class="no-padding">
                 <q-banner dense class="bg-blue-3 text-white">
-                    Those photos are uploaded by customers and contain unmoderated data.
+                    Those photos are uploaded by customers and contain
+                    unmoderated data.
                 </q-banner>
 
                 <div class="q-pa-md">
@@ -35,25 +34,31 @@
                 </div>
             </q-tab-panel>
         </q-tab-panels>
-
-
     </q-page>
 </template>
 
 <script>
 import {mapActions, mapState} from 'vuex';
-import DishHeader from "../components/DishHeader";
+import DishHeader from '../components/DishHeader';
+import DishDetails from '../components/DishDetails';
+import DishReviewList from '../components/DishReviewList';
 
 export default {
     name: 'Dish',
-    components: {DishHeader},
+    components: {DishReviewList, DishDetails, DishHeader},
     async created() {
-        await this.fetchDish();
-        this.$emit('updateTitle', this.place.name);
+        await this.fetchDish(this.$route.params.dishId);
+        this.$emit('updateBackRoute', {
+            name: 'restaurant.menu',
+            params: {
+                restaurantId: this.$route.params.restaurantId,
+                dishId: this.dish.id,
+            },
+        });
     },
     data() {
         return {
-            tab: 'details'
+            tab: 'details',
         };
     },
     methods: {

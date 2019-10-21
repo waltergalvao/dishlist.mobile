@@ -22,6 +22,7 @@
                     <div class="text-h5 text-bold photos__heading">
                         {{ dishName }}
                     </div>
+                    <rating>4.3</rating>
                 </div>
             </q-carousel-slide>
         </q-carousel>
@@ -29,8 +30,10 @@
 </template>
 
 <script>
+import Rating from './_dumb/VRating';
 export default {
     name: 'DishHeader',
+    components: {Rating},
     data() {
         return {
             currentSlide: 0,
@@ -43,8 +46,8 @@ export default {
         },
         dishName: {
             type: String,
-            required: true
-        }
+            required: true,
+        },
     },
 };
 </script>
@@ -58,10 +61,10 @@ export default {
             rgba(255, 175, 75, 0) 0%,
             rgba(0, 0, 0, 0.7) 80%
         ) !important;
+        padding-top: 25px;
     }
 
     &__heading {
-        padding-top: 25px;
         color: white;
     }
 }

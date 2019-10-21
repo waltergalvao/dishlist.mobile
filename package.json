@@ -9,7 +9,8 @@
   "scripts": {
     "dev": "quasar dev",
     "build": "quasar build",
-    "build:pwa": "quasar build -m pwa"
+    "build:pwa": "quasar build -m pwa",
+    "fix": "node_modules/prettier/bin-prettier.js --write \"**/*.vue\"node_modules/prettier/bin-prettier.js --write \"src/**/*.{js,vue}\""
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",

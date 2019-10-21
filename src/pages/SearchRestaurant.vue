@@ -3,19 +3,23 @@
         <div class="fixed-center">
             <span>To open the Menu</span>
 
-            <q-img id="qrCode" v-on:click="scanQRcode" :src="imageSrc" style="width: 100%">
-                <div class="absolute-bottom text-subtitle1 text-center q-pa-xs">Scan QR Code</div>
+            <q-img
+                id="qrCode"
+                v-on:click="scanQRcode"
+                :src="imageSrc"
+                style="width: 100%"
+            >
+                <div class="absolute-bottom text-subtitle1 text-center q-pa-xs">
+                    Scan QR Code
+                </div>
             </q-img>
             or to search restaurant by name
-            <span
-                class="linkText"
-                v-on:click="searchRestaurantByName"
-            >Click Here</span>
+            <span class="linkText" v-on:click="searchRestaurantByName"
+                >Click Here</span
+            >
         </div>
     </q-page>
 </template>
-
-
 
 <script>
 import {mapActions, mapState} from 'vuex';
@@ -65,34 +69,33 @@ export default {
 };
 </script>
 
-
 <style lang="scss">
-    .linkText {
-        color: blue;
-        text-decoration: underline;
-    }
+.linkText {
+    color: blue;
+    text-decoration: underline;
+}
 
-    #searchRestaurantScreen {
-        text-align: center;
-        height: 1vh;
-        background-color: white;
-    }
+#searchRestaurantScreen {
+    text-align: center;
+    height: 1vh;
+    background-color: white;
+}
 
-    .setWidth {
-        width: 100%;
-        font-weight: strong;
-    }
+.setWidth {
+    width: 100%;
+    font-weight: strong;
+}
 
-    .fixed-center {
-        width: 70%;
-        z-index: 999;
-        position: absolute;
-    }
-    span {
-        display: block;
-    }
+.fixed-center {
+    width: 70%;
+    z-index: 999;
+    position: absolute;
+}
+span {
+    display: block;
+}
 
-    #qrCode {
-        margin: 1em;
-    }
+#qrCode {
+    margin: 1em;
+}
 </style>
