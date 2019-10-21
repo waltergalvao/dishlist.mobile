@@ -31,7 +31,7 @@
                 v-for="(ingredient, index) in dish.ingredients"
                 :key="index"
             >
-                <q-item-section>{{ ingredient }}</q-item-section>
+                <q-item-section>{{ ingredient.name }}</q-item-section>
             </q-item>
         </q-list>
     </q-page>

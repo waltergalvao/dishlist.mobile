@@ -62,7 +62,7 @@ export default {
         };
     },
     async created() {
-        await this.fetchMenu();
+        await this.fetchMenu(1); // @TODO Change for id found in route
         this.$emit('updateTitle', this.place.name);
         this.currentCategory = 'category-' + this.categories[0].id;
         document.addEventListener('scroll', this.handleScroll);

@@ -22,7 +22,7 @@
             </q-tab-panel>
 
             <q-tab-panel name="reviews">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                <dish-review-list :dish="dish"/>
             </q-tab-panel>
 
             <q-tab-panel name="photos" class="no-padding">
@@ -44,12 +44,13 @@
 import {mapActions, mapState} from 'vuex';
 import DishHeader from "../components/DishHeader";
 import DishDetails from "../components/DishDetails";
+import DishReviewList from "../components/DishReviewList";
 
 export default {
     name: 'Dish',
-    components: {DishDetails, DishHeader},
+    components: {DishReviewList, DishDetails, DishHeader},
     async created() {
-        await this.fetchDish();
+        await this.fetchDish(1);
         this.$emit('updateBackRoute', { path: '/place/xpto/menu'});
     },
     data() {

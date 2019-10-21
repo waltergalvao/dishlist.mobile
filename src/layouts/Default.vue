@@ -54,7 +54,7 @@ export default {
             return this.$route.meta.backUrl;
         },
         showBackButton() {
-            return !!this.$route.meta.showBackButton;
+            return !!this.$route.meta.showBackButton && this.backRoute !== null;
         },
         showNavigation() {
             if (this.$route.meta.showNavigation === undefined) {
