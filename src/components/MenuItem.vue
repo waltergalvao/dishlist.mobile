@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="'/place/xpto/dish'" tag="div">
+    <router-link :to="{ name: 'restaurant.menu.dish', params: { restaurantId: restaurant.id, dishId: item.id } }" tag="div">
         <q-item class="item" clickable v-ripple >
             <q-item-section thumbnail>
                 <img :src="item.thumbnail" class="item__thumbnail"/>
@@ -44,6 +44,10 @@ export default {
     components: {GroupDish, Rating, VegetarianTag, VeganTag, SpicyTag},
     props: {
         item: {
+            type: Object,
+            required: true,
+        },
+        restaurant: {
             type: Object,
             required: true,
         },

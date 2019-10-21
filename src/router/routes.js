@@ -8,13 +8,13 @@ const routes = [
                 component: () => import('pages/Index.vue'),
             },
             {
-                name: 'place.menu',
-                path: 'place/:placeName/menu',
+                name: 'restaurant.menu',
+                path: 'restaurant/:restaurantId/menu',
                 component: () => import('pages/Menu.vue'),
             },
             {
-                name: 'place.menu.dish',
-                path: 'place/:placeName/dish/',
+                name: 'restaurant.menu.dish',
+                path: 'restaurant/:restaurantId/dish/:dishId',
                 component: () => import('pages/Dish.vue'),
                 meta: {
                     showBackButton: true,
@@ -22,11 +22,11 @@ const routes = [
                 },
             },
             {
-                path: 'place/:placeName/searchRestaurant/',
+                path: 'restaurant/search/',
                 component: () => import('pages/SearchRestaurant.vue'),
             },
             {
-                path: 'place/:placeName/RestaurantSearchList/',
+                path: 'restaurant/:placeName/restaurantSearchList/',
                 component: () => import('pages/RestaurantSearchList.vue')
             }
         ],
