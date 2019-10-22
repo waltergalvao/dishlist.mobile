@@ -19,9 +19,8 @@
             <q-item
                 clickable
                 v-ripple
-                :active="link === 'trash'"
-                @click="link = 'trash'"
-                active-class="my-menu-link"
+                :to="{name: 'restaurant.search'}"
+                active-class="menu--active"
             >
                 <q-item-section avatar>
                     <q-icon name="fas fa-qrcode" />
@@ -33,9 +32,8 @@
             <q-item
                 clickable
                 v-ripple
-                :active="link === 'trash'"
-                @click="link = 'trash'"
-                active-class="my-menu-link"
+                :to="{name: 'restaurant.search'}"
+                active-class="menu--active"
             >
                 <q-item-section avatar>
                     <q-icon name="search" />
@@ -47,13 +45,7 @@
             <q-separator spaced />
 
             <q-item-label header>User</q-item-label>
-            <q-item
-                clickable
-                v-ripple
-                :active="link === 'settings'"
-                @click="link = 'settings'"
-                active-class="my-menu-link"
-            >
+            <q-item clickable v-ripple>
                 <q-item-section avatar>
                     <q-icon name="fas fa-sign-out-alt" />
                 </q-item-section>

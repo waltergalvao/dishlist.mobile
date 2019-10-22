@@ -22,10 +22,12 @@ const routes = [
                 },
             },
             {
+                name: 'restaurant.search',
                 path: 'restaurant/search/',
                 component: () => import('pages/SearchRestaurant.vue'),
             },
             {
+                name: 'restaurant.search.results',
                 path: 'restaurant/:placeName/restaurantSearchList/',
                 component: () => import('pages/RestaurantSearchList.vue'),
             },
