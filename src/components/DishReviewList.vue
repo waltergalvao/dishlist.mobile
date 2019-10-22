@@ -1,5 +1,8 @@
 <template>
     <div class="reviews">
+        <div class="text-orange no-margin text-h3 text-center">
+            <q-icon name="star" /> {{ dish.rating }}
+        </div>
         <q-list>
             <div v-for="review in reviewPagination.reviews" :key="review.id">
                 <q-item>

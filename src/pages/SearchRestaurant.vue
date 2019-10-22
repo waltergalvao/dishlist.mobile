@@ -51,12 +51,12 @@ export default {
                 vueMethodsObj.$store.dispatch('fetchMenu', {
                     restaurantId: result.text,
                 });
-                vueMethodsObj.$router.push('/place/:placeName/menu');
+                vueMethodsObj.$router.push('/restaurant/' + result.text + '/menu');
             });
         },
 
         searchRestaurantByName() {
-            this.$router.push('/place/:placeName/RestaurantSearchList');
+            this.$router.push('/restaurant/search/');
         },
     },
     computed: {
