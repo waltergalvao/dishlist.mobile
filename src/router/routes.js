@@ -4,10 +4,6 @@ const routes = [
         component: () => import('layouts/Default.vue'),
         children: [
             {
-                path: '',
-                component: () => import('pages/Index.vue'),
-            },
-            {
                 name: 'restaurant.menu',
                 path: 'restaurant/:restaurantId/menu',
                 component: () => import('pages/Menu.vue'),
@@ -22,14 +18,14 @@ const routes = [
                 },
             },
             {
-                name: 'restaurant.search',
-                path: 'restaurant/search/',
-                component: () => import('pages/SearchRestaurant.vue'),
+                name: 'home',
+                path: '/',
+                component: () => import('pages/Home.vue'),
             },
             {
-                name: 'restaurant.search.list',
-                path: 'restaurant/:placeName/restaurantSearchList/',
-                component: () => import('pages/RestaurantSearchList.vue'),
+                name: 'restaurant.search',
+                path: 'restaurant/search',
+                component: () => import('pages/SearchRestaurant.vue'),
             },
         ],
     },

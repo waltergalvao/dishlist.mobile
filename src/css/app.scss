@@ -1,3 +1,8 @@
+.fixed-center {
+    width: 70%;
+    z-index: 999;
+    position: absolute;
+}
 
 .q-drawer--on-top {
     z-index: 10000000 !important;

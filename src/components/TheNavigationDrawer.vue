@@ -19,7 +19,7 @@
             <q-item
                 clickable
                 v-ripple
-                :to="{name: 'restaurant.search'}"
+                :to="{name: 'home'}"
                 active-class="menu--active"
             >
                 <q-item-section avatar>

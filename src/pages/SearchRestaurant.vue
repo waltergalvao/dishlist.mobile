@@ -1,21 +1,28 @@
 <template>
     <q-page id="searchRestaurantScreen">
         <div class="fixed-center">
-            <span>To open the Menu</span>
-
-            <q-img
-                id="qrCode"
-                v-on:click="scanQRcode"
-                :src="imageSrc"
-                style="width: 100%"
+            <q-input
+                v-model="restaurantName"
+                label="Restaurant Name.."
+                class="setWidth dishlist-searchbar"
             >
-                <div class="absolute-bottom text-subtitle1 text-center q-pa-xs">
-                    Scan QR Code
-                </div>
-            </q-img>
-            <router-link class="linkText" :to="{ name: 'restaurant.search.list' }">
-                or search restaurant by name
-            </router-link>
+                <template v-slot:append>
+                    <q-icon name="search" />
+                </template>
+            </q-input>
+
+            <br />
+
+            <q-btn
+                @click="searchRestaurant()"
+                width="60%"
+                :dense="$q.screen.xs"
+                no-caps
+                label="Search"
+                color="secondary"
+                text-color="color:rgba(0, 0, 0, 0.6)"
+            >
+            </q-btn>
         </div>
     </q-page>
 </template>
@@ -26,58 +33,40 @@ import {mapActions, mapState} from 'vuex';
 export default {
     data() {
         return {
-            restaurantId: 1,
+            restaurantName: 'Veggie Bowl',
             restaurantList: [],
-            imageSrc: 'statics/qr-code.png',
         };
     },
 
-    name: 'Restaurant',
+    name: 'RestaurantSearchList',
 
     async created() {
-        // this.restaurantList = this.$store.state.restaurant;
+        this.restaurantList = this.$store.state.restaurant;
     },
 
     methods: {
         ...mapActions({
-            fetchMenu: 'fetchMenu',
+            fetchRestaurant: 'fetchRestaurant',
         }),
-
-        scanQRcode() {
-            let vueMethodsObj = this;
-            cordova.plugins.barcodeScanner.scan(function(result) {
-                console.log(result);
-                vueMethodsObj.$store.dispatch('fetchMenu', {
-                    restaurantId: result.text,
-                });
-                vueMethodsObj.$router.push('/restaurant/' + result.text + '/menu');
+        searchRestaurant() {
+            this.$store.dispatch('fetchRestaurant', {
+                restaurantName: this.restaurantName,
             });
-        },
-
-        searchRestaurantByName() {
-            this.$router.push('/restaurant/search/');
+            //this.$router.push("/place/:placeName/menu")
         },
     },
+
     computed: {
         ...mapState({
-            featuredItems: state => state.menu.featuredItems,
-            place: state => state.menu.place,
-            categories: state => state.menu.categories,
+            restaurant: state => state.restaurant.restaurant,
         }),
     },
 };
 </script>
 
 <style lang="scss">
-.linkText {
-    color: blue;
-    text-decoration: underline;
-}
-
 #searchRestaurantScreen {
-    text-align: center;
-    height: 1vh;
-    background-color: white;
+    background-image: url('~assets/bg-search-screen.jpg');
 }
 
 .setWidth {
@@ -86,15 +75,22 @@ export default {
 }
 
 .fixed-center {
-    width: 70%;
-    z-index: 999;
+    width: 80%;
     position: absolute;
-}
-span {
-    display: block;
+    z-index: 999;
 }
 
-#qrCode {
-    margin: 1em;
+.dishlist-searchbar {
+    background-color: white;
+}
+.q-field--focused {
+    border: 4px solid green;
+    color: blue;
+}
+.q-field--focused .q-field__label {
+    color: green !important;
+}
+.setWidth {
+    width: 100%;
 }
 </style>
