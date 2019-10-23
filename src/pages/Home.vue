@@ -36,6 +36,9 @@ export default {
             imageSrc: 'statics/qr-code.png',
         };
     },
+    created() {
+        this.$emit('updateTitle', 'DishList');
+    },
     methods: {
         ...mapActions({
             fetchMenu: 'fetchMenu',

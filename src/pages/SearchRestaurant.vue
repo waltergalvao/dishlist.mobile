@@ -41,6 +41,7 @@ export default {
     name: 'RestaurantSearchList',
 
     async created() {
+        this.$emit('updateTitle', 'DishList');
         this.restaurantList = this.$store.state.restaurant;
     },
 
