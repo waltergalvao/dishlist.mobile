@@ -15,6 +15,7 @@
                 class="featured__item"
                 :name="item.id"
                 :img-src="item.thumbnail"
+                @click="navigateToDish(item)"
             >
                 <div
                     class="absolute-bottom custom-caption bg-dark-separator q-pa-sm featured__bg flex justify-between"
@@ -49,6 +50,12 @@ export default {
             currentSlide: null,
         };
     },
+    props: {
+        restaurant: {
+            type: Object,
+            required: true,
+        },
+    },
     created() {
         this.currentSlide = this.featuredItems[0].id || null;
     },
@@ -56,6 +63,14 @@ export default {
         ...mapState({
             featuredItems: state => state.menu.featuredItems,
         }),
+    },
+    methods: {
+        navigateToDish(item) {
+            this.$router.push({
+                name: 'restaurant.menu.dish',
+                params: {restaurantId: this.restaurant.id, dishId: item.id},
+            });
+        },
     },
 };
 </script>

@@ -20,7 +20,7 @@
             <menu-filter v-show="showFilter" />
         </q-page-sticky>
 
-        <menu-featured v-if="featuredItems.length" />
+        <menu-featured v-if="featuredItems.length && restaurant" :restaurant="restaurant"/>
 
         <div class="q-pa-sm" v-if="categories">
             <q-list>
@@ -36,7 +36,7 @@
                     <menu-item
                         v-for="item in category.items"
                         :item="item"
-                        :restaurant="place"
+                        :restaurant="restaurant"
                         :key="item.id"
                     />
                 </div>
@@ -124,7 +124,7 @@ export default {
     computed: {
         ...mapState({
             featuredItems: state => state.menu.featuredItems,
-            place: state => state.menu.place,
+            restaurant: state => state.menu.place,
             categories: state => state.menu.categories,
         }),
         currentCategoryElement() {
