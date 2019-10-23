@@ -1,11 +1,11 @@
 <template>
     <div>
         <q-carousel
-            arrows
             animated
             v-model="currentSlide"
             height="250px"
             class="photos"
+            :arrows="photos.length > 1"
             swipeable
             infinite
         >
