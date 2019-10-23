@@ -20,7 +20,7 @@
             </q-tab-panel>
 
             <q-tab-panel name="reviews">
-                <dish-review-list :dish="dish" />
+                <dish-review-list :dish="dish" :restaurnt="restaurant"/>
             </q-tab-panel>
 
             <q-tab-panel name="photos" class="no-padding">

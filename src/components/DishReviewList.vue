@@ -25,6 +25,9 @@
                 <q-separator spaced inset />
             </div>
         </q-list>
+        <q-page-sticky position="bottom-right" :offset="[25, 25]">
+            <q-btn fab icon="add" color="accent" @click="navigateToAddReview" />
+        </q-page-sticky>
     </div>
 </template>
 
@@ -34,6 +37,10 @@ import {mapActions, mapState} from 'vuex';
 export default {
     name: 'DishReviewList',
     props: {
+        restaurant: {
+            type: Object,
+            required: true,
+        },
         dish: {
             type: Object,
             required: true,
@@ -54,6 +61,15 @@ export default {
         ...mapActions({
             fetchReviews: 'fetchReviews',
         }),
+        navigateToAddReview() {
+            this.$router.push({
+                name: 'restaurant.review',
+                params: {
+                    restaurantId: this.$route.params.restaurantId,
+                    dishId: this.dish.id,
+                },
+            });
+        },
     },
     computed: {
         ...mapState({
