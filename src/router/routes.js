@@ -27,7 +27,7 @@ const routes = [
                 component: () => import('pages/SearchRestaurant.vue'),
             },
             {
-                name: 'restaurant.search.results',
+                name: 'restaurant.search.list',
                 path: 'restaurant/:placeName/restaurantSearchList/',
                 component: () => import('pages/RestaurantSearchList.vue'),
             },

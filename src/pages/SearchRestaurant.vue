@@ -13,10 +13,9 @@
                     Scan QR Code
                 </div>
             </q-img>
-            or to search restaurant by name
-            <span class="linkText" v-on:click="searchRestaurantByName"
-                >Click Here</span
-            >
+            <router-link class="linkText" :to="{ name: 'restaurant.search.list' }">
+                or search restaurant by name
+            </router-link>
         </div>
     </q-page>
 </template>

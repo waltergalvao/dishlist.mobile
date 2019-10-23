@@ -10,11 +10,11 @@
             infinite
         >
             <q-carousel-slide
-                v-for="(item, index) in photos"
+                v-for="(photo, index) in photos"
                 :key="index"
                 class="photos__item"
                 :name="index"
-                :img-src="item"
+                :img-src="photo.url"
             >
                 <div
                     class="absolute-bottom custom-caption bg-dark-separator q-pa-sm photos__bg flex justify-between"
