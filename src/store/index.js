@@ -4,6 +4,7 @@ import menu from '../store/menu/index';
 import dish from '../store/dish/index';
 import restaurant from '../store/restaurant/index';
 import review from '../store/review/index';
+import ui from '../store/ui/index';
 
 Vue.use(Vuex);
 
@@ -14,6 +15,7 @@ export default function(/* { ssrContext } */) {
             dish,
             restaurant,
             review,
+            ui,
         },
 
         // enable strict mode (adds overhead!)

@@ -4,7 +4,7 @@
             <q-toolbar>
                 <v-navigation-menu
                     v-if="showNavigation"
-                    @click.native="leftDrawerOpen = !leftDrawerOpen"
+                    @click.native="setNavigationDrawerState(true)"
                 />
 
                 <back-button
@@ -19,10 +19,7 @@
             </q-toolbar>
         </q-header>
 
-        <the-navigation-drawer
-            :is-open="leftDrawerOpen"
-            @update="leftDrawerOpen = $event"
-        />
+        <the-navigation-drawer />
 
         <q-page-container>
             <router-view
@@ -37,6 +34,7 @@
 import TheNavigationDrawer from '../components/TheNavigationDrawer';
 import VNavigationMenu from '../components/_dumb/VNavigationButton';
 import BackButton from '../components/_dumb/VBackButton';
+import {mapActions} from 'vuex';
 
 export default {
     name: 'Default',
@@ -49,6 +47,9 @@ export default {
         };
     },
     methods: {
+        ...mapActions({
+            setNavigationDrawerState: 'setNavigationDrawerState',
+        }),
         updateTitle(value) {
             this.title = value;
         },

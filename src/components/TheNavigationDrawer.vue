@@ -1,5 +1,5 @@
 <template>
-    <q-drawer v-model="isOpen" @input="updateState" elevated class="drawer">
+    <q-drawer :value="isOpen" @input="setNavigationDrawerState($event)" elevated class="drawer">
         <div class="drawer__header">
             <div class="text-white q-pa-md">
                 <q-avatar>
@@ -54,18 +54,19 @@
 </template>
 
 <script>
+    import {mapActions, mapState} from "vuex";
+
 export default {
     name: 'TheNavigationDrawer',
-    props: {
-        isOpen: {
-            type: Boolean,
-            default: false,
-        },
-    },
     methods: {
-        updateState() {
-            this.$emit('update', this.isOpen);
-        },
+        ...mapActions({
+            setNavigationDrawerState: 'setNavigationDrawerState',
+        }),
+    },
+    computed: {
+        ...mapState({
+            isOpen: state => state.ui.drawer.isOpen,
+        }),
     },
 };
 </script>
