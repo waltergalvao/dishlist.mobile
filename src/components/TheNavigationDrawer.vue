@@ -1,17 +1,14 @@
 <template>
-    <q-drawer :value="isOpen" elevated class="drawer">
-        <q-img
-            src="https://image.freepik.com/free-vector/red-abstract-background-with-flat-design_23-2147875149.jpg"
-            style="height: 150px"
-        >
-            <div class="absolute-bottom bg-transparent">
-                <q-avatar size="56px" class="q-mb-sm">
-                    <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
+    <q-drawer v-model="isOpen" @input="updateState" elevated class="drawer">
+        <div class="drawer__header">
+            <div class="text-white q-pa-md">
+                <q-avatar>
+                    <img src="~assets/avatar.png" class="drawer__avatar" />
                 </q-avatar>
-                <div class="text-weight-bold">Jhon Doe</div>
+                <div class="text-weight-bold drawer__name">Jhon Doe</div>
                 <div>+1 (604) 726-2010</div>
             </div>
-        </q-img>
+        </div>
 
         <q-list>
             <q-item-label header>Select Restaurant</q-item-label>
@@ -65,7 +62,25 @@ export default {
             default: false,
         },
     },
+    methods: {
+        updateState() {
+            this.$emit('update', this.isOpen);
+        },
+    },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.drawer {
+    &__header {
+        background: url('~assets/drawer-bg.png');
+        background-size: cover;
+        background-position-y: bottom;
+        padding: 40px 0 5px 0;
+    }
+
+    &__name {
+        padding-top: 10px;
+    }
+}
+</style>

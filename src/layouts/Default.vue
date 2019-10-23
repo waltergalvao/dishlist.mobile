@@ -6,6 +6,7 @@
                     v-if="showNavigation"
                     @click.native="leftDrawerOpen = !leftDrawerOpen"
                 />
+
                 <back-button
                     :to="backRoute"
                     v-if="showBackButton"
@@ -18,7 +19,10 @@
             </q-toolbar>
         </q-header>
 
-        <the-navigation-drawer :is-open="leftDrawerOpen" />
+        <the-navigation-drawer
+            :is-open="leftDrawerOpen"
+            @update="leftDrawerOpen = $event"
+        />
 
         <q-page-container>
             <router-view
