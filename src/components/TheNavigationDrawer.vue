@@ -1,5 +1,10 @@
 <template>
-    <q-drawer :value="isOpen" @input="setNavigationDrawerState($event)" elevated class="drawer">
+    <q-drawer
+        :value="isOpen"
+        @input="setNavigationDrawerState($event)"
+        elevated
+        class="drawer"
+    >
         <div class="drawer__header">
             <div class="text-white q-pa-md">
                 <q-avatar>
@@ -54,7 +59,7 @@
 </template>
 
 <script>
-    import {mapActions, mapState} from "vuex";
+import {mapActions, mapState} from 'vuex';
 
 export default {
     name: 'TheNavigationDrawer',

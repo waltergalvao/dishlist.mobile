@@ -20,7 +20,7 @@
             <menu-filter v-show="showFilter" />
         </q-page-sticky>
 
-        <menu-featured v-if="featuredItems" />
+        <menu-featured v-if="featuredItems.length" />
 
         <div class="q-pa-sm" v-if="categories">
             <q-list>

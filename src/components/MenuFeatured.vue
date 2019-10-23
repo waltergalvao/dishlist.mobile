@@ -46,8 +46,11 @@ export default {
     name: 'MenuFeatured',
     data() {
         return {
-            currentSlide: '6eec5eb6-9755-11e4-b181-febt129d48d6',
+            currentSlide: null,
         };
+    },
+    created() {
+        this.currentSlide = this.featuredItems[0].id || null;
     },
     computed: {
         ...mapState({
