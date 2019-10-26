@@ -10,6 +10,10 @@ export default {
             .then(response => {
                 console.log(response.data);
                 commit(SET_RESTAURANT, response.data);
-            });
+            })
+            .catch(err => {
+                console.log(err);
+                commit(SET_RESTAURANT,[])
+            } );
     },
 };
