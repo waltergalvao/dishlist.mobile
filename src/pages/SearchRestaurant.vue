@@ -19,7 +19,7 @@
         <div class="q-pa-sm" v-if="restaurantList">
             <q-list>
                 <div>
-                    <RestaurantDetails
+                    <restaurant-details
                         v-for="(restaurant, key) in restaurantList"
                         :restaurant="restaurant"
                         :key="key"
@@ -32,14 +32,14 @@
 
 <script>
 import {mapActions, mapState} from 'vuex';
-import RestaurantDetails from '../components/RestaurantDetails';
+import RestaurantDetails from '../components/RestaurantItem';
 
 export default {
     name: 'RestaurantSearchList',
     components: {RestaurantDetails},
     data() {
         return {
-            restaurantName: null,
+            restaurantName: '',
         };
     },
     mounted() {
@@ -50,7 +50,7 @@ export default {
             fetchRestaurant: 'fetchRestaurant',
         }),
         async searchRestaurant() {
-            await this.fetchRestaurant({restaurantName: this.restaurantName});
+            await this.fetchRestaurant(this.restaurantName);
         },
     },
     computed: {

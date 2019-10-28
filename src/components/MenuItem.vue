@@ -61,23 +61,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
-.item {
-    align-items: center;
-
-    &__tags {
-        margin-top: 10px;
-    }
-
-    &__description {
-        margin-top: 10px;
-    }
-
-    &__thumbnail {
-        border-radius: 50% !important;
-    }
-}
-
+<style lang="scss" scoped>
 .q-item__section--thumbnail img {
     width: 96px;
     height: 96px;
@@ -95,10 +79,5 @@ export default {
 
 .q-item {
     padding: 25px 16px;
-}
-
-.q-separator--horizontal.q-separator--item-inset {
-    margin-left: 110px;
-    width: calc(100% - 110px);
 }
 </style>
