@@ -25,3 +25,7 @@ You need Docker to run this application.
 #### Building Android App
 
 1: Inside the container, enter `src-cordova` directory and run `cordova build android`
+
+#### Testing Cordova on Browser
+
+1: Inside the container, run `quasar dev -m cordova -T browser`
