@@ -66,11 +66,8 @@ export default {
         };
     },
     async created() {
-        console.log('check2' + this.$route.params.restaurantId);
         await this.fetchMenu(this.$route.params.restaurantId);
-        
         this.$emit('updateTitle', this.restaurant.name);
-        console.log(this.restaurant);
         this.currentCategory = 'category-' + this.categories[0].id;
         document.addEventListener('scroll', this.handleScroll);
     },

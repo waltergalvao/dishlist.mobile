@@ -1,14 +1,13 @@
 <template>
-    <q-page id="searchRestaurantScreen">
-        <div>
+    <q-page>
+        <div class="q-pa-sm q-mt-sm">
             <q-input
+                outlined
                 ref="restaurantNameInput"
                 v-model="restaurantName"
                 label="Restaurant Name.."
-                class="dishlist-searchbar"
                 type="text"
                 clearable
-                
                 @keyup="searchRestaurant()"
             >
                 <template v-slot:append>
@@ -40,60 +39,24 @@ export default {
     components: {RestaurantDetails},
     data() {
         return {
-            restaurantName: '',
-            restaurantList: null,
+            restaurantName: null,
         };
     },
-
-    mounted(){
-        this.$refs.restaurantNameInput.focus()
+    mounted() {
+        this.$refs.restaurantNameInput.focus();
     },
-
     methods: {
         ...mapActions({
             fetchRestaurant: 'fetchRestaurant',
         }),
-         async searchRestaurant() {
-             await this.$store.dispatch('fetchRestaurant', {
-                restaurantName: this.restaurantName,
-            });
-
-            if(this.$store.state.restaurant.restaurant ==[]){
-                this.restaurantList = null;
-
-            }else{
-console.log(this.$store.state.restaurant.restaurant );
-            this.restaurantList = this.$store.state.restaurant.restaurant;
-            }
-            
+        async searchRestaurant() {
+            await this.fetchRestaurant({restaurantName: this.restaurantName});
         },
     },
-
     computed: {
         ...mapState({
-            restaurant: state => state.restaurant.restaurant,
+            restaurantList: state => state.restaurant.restaurant,
         }),
-         
-        
-    
     },
 };
 </script>
-
-<style lang="scss">
-
-
-
-.dishlist-searchbar {
-    background-color: white;
-    margin: 5px;
-
-}
-.q-field--focused {
-    border: 1px solid red;
-    color: blue;
-}
-.q-field--focused .q-field__label {
-    color: red !important;
-}
-</style>

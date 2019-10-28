@@ -25,7 +25,6 @@
                     >{{ restaurant.website }}
                 </q-item-label>
 
-
                 <!-- <q-item-section class="block item__tags">
                     <rating>{{ item.rating }}</rating>
                     <group-dish>2</group-dish>
@@ -33,7 +32,7 @@
                     <vegan-tag v-if="item.is_vegan" />
                     <vegetarian-tag v-else-if="item.is_vegetarian" />
                 </q-item-section>-->
-            </q-item-section> 
+            </q-item-section>
         </q-item>
 
         <q-separator />
@@ -41,8 +40,6 @@
 </template>
 
 <script>
-
-
 export default {
     name: 'RestaurantDetails',
     props: {
@@ -51,10 +48,6 @@ export default {
             required: true,
         },
     },
-
-    created(){
-        console.log(this.restaurant);
-    }
 };
 </script>
 
@@ -81,8 +74,6 @@ export default {
     border-radius: 4px;
 }
 
-
-
 .q-item {
     padding: 25px 16px;
 }
@@ -92,6 +83,3 @@ export default {
     width: calc(100% - 110px);
 }
 </style>
-
-
-

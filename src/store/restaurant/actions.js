@@ -1,5 +1,5 @@
 import {SET_RESTAURANT} from '../mutationTypes';
-//import dishlistApiRequests from '../../boot/axios';
+
 export default {
     fetchRestaurant({commit}, params) {
         return this._vm.$axios
@@ -13,7 +13,7 @@ export default {
             })
             .catch(err => {
                 console.log(err);
-                commit(SET_RESTAURANT,[])
-            } );
+                commit(SET_RESTAURANT, []);
+            });
     },
 };
