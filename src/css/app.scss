@@ -25,3 +25,12 @@
 .q-carousel .q-btn__content .q-icon {
     text-shadow: 1px 2px 4px rgba(0,0,0,.55)
 }
+
+.q-rating__icon {
+    text-shadow: none !important;
+    color: #ccc;
+}
+
+.q-rating__icon--active {
+    color: $orange !important;
+}

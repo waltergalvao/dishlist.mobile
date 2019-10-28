@@ -14,13 +14,13 @@
 
         <q-separator />
 
-        <q-tab-panels v-model="tab" animated class="">
+        <q-tab-panels v-model="tab" animated swipeable>
             <q-tab-panel name="details">
                 <dish-details :dish="dish" />
             </q-tab-panel>
 
             <q-tab-panel name="reviews">
-                <dish-review-list :dish="dish" :restaurnt="restaurant"/>
+                <dish-review-list :dish="dish"/>
             </q-tab-panel>
 
             <q-tab-panel name="photos" class="no-padding">
@@ -48,6 +48,7 @@ export default {
     components: {DishReviewList, DishDetails, DishHeader},
     async created() {
         await this.fetchDish(this.$route.params.dishId);
+        this.$emit('updateTitle', this.dish.name);
         this.$emit('updateBackRoute', {
             name: 'restaurant.menu',
             params: {

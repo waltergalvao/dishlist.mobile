@@ -22,7 +22,7 @@
                     <div class="text-h5 text-bold photos__heading">
                         {{ dishName }}
                     </div>
-                    <rating>4.3</rating>
+                    <rating>{{ rating }}</rating>
                 </div>
             </q-carousel-slide>
         </q-carousel>
@@ -48,6 +48,10 @@ export default {
             type: String,
             required: true,
         },
+        rating: {
+            type: String,
+            required: true,
+        }
     },
 };
 </script>

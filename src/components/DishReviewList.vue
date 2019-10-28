@@ -1,10 +1,11 @@
 <template>
     <div class="reviews">
-        <div class="text-orange no-margin text-h3 text-center">
-            <q-icon name="star" /> {{ dish.rating }}
+        <div class="text-orange no-margin text-h3 text-center flex justify-center ">
+            <q-icon name="star"/> {{ dish.rating }}
         </div>
-        <q-list>
-            <div v-for="review in reviewPagination.reviews" :key="review.id">
+        <div class="text-weight-light text-center">{{ reviewData.pagination.total_reviews }} reviews</div>
+        <q-list class="q-mt-sm">
+            <div v-for="review in reviewData.reviews" :key="review.id">
                 <q-item>
                     <q-item-section>
                         <q-item-label>{{ review.description }}</q-item-label>
@@ -25,6 +26,7 @@
                 <q-separator spaced inset />
             </div>
         </q-list>
+        <q-btn label="Load More" @click="loadMore" v-if="hasMorePages" class="full-width" flat></q-btn>
         <q-page-sticky position="bottom-right" :offset="[25, 25]">
             <q-btn fab icon="add" color="accent" @click="navigateToAddReview" />
         </q-page-sticky>
@@ -37,10 +39,6 @@ import {mapActions, mapState} from 'vuex';
 export default {
     name: 'DishReviewList',
     props: {
-        restaurant: {
-            type: Object,
-            required: true,
-        },
         dish: {
             type: Object,
             required: true,
@@ -49,17 +47,20 @@ export default {
     data() {
         return {
             tab: 'details',
+            page: 1,
         };
     },
     async created() {
+        this.clearReviews();
         await this.fetchReviews({
-            dishId: 1,
-            page: 1,
+            dishId: this.$route.params.dishId,
+            page: this.page,
         });
     },
     methods: {
         ...mapActions({
             fetchReviews: 'fetchReviews',
+            clearReviews: 'clearReviews',
         }),
         navigateToAddReview() {
             this.$router.push({
@@ -70,11 +71,24 @@ export default {
                 },
             });
         },
+        async loadMore() {
+            this.page++;
+            await this.fetchReviews({
+                dishId: this.$route.params.dishId,
+                page: this.page,
+            });
+        },
     },
     computed: {
         ...mapState({
-            reviewPagination: state => state.review.reviewsPagination,
+            reviewData: state => state.review,
         }),
+        hasMorePages() {
+            return (
+                this.reviewData.pagination.current_page <
+                this.reviewData.pagination.total_pages
+            );
+        },
     },
 };
 </script>

@@ -25,6 +25,7 @@
             <router-view
                 @updateTitle="updateTitle"
                 @updateBackRoute="updateBackRoute"
+                :key="$route.fullPath"
             />
         </q-page-container>
     </q-layout>
@@ -57,7 +58,7 @@ export default {
             this.backRoute = value;
         },
         goBack() {
-            this.$router.go(-1);
+            this.$router.push(this.backRoute);
         },
     },
     computed: {
