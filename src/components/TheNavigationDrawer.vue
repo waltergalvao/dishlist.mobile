@@ -7,9 +7,9 @@
     >
         <div class="drawer__header">
             <div class="text-white q-pa-md">
-<!--                <q-avatar>-->
-<!--                    <img src="~assets/avatar.png" class="drawer__avatar" />-->
-<!--                </q-avatar>-->
+                <!--                <q-avatar>-->
+                <!--                    <img src="~assets/avatar.png" class="drawer__avatar" />-->
+                <!--                </q-avatar>-->
                 <div class="text-weight-bold drawer__name">Jhon Doe</div>
                 <div>johndoe@gmail.com</div>
             </div>
