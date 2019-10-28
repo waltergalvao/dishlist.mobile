@@ -1,0 +1,15 @@
+.item {
+    align-items: center;
+
+    &__tags {
+        margin-top: 10px;
+    }
+
+    &__description {
+        margin-top: 10px;
+    }
+
+    &__thumbnail {
+        border-radius: 50% !important;
+    }
+}
