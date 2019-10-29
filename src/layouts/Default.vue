@@ -25,7 +25,6 @@
             <router-view
                 @updateTitle="updateTitle"
                 @updateBackRoute="updateBackRoute"
-                :key="$route.fullPath"
             />
         </q-page-container>
     </q-layout>
