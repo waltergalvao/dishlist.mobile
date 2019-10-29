@@ -26,7 +26,7 @@
         <vegan-tag v-if="dish.is_vegan" />
         <vegetarian-tag v-else-if="dish.is_vegetarian" />
 
-        <q-list bordered separator class="details__ingredients">
+        <q-list bordered separator class="details__ingredients" v-if="dish.ingredients.length">
             <q-item
                 v-for="(ingredient, index) in dish.ingredients"
                 :key="index"

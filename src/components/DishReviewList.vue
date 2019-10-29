@@ -26,6 +26,15 @@
                 <q-separator spaced inset />
             </div>
         </q-list>
+
+        <div class="text-center">
+            <q-spinner-dots
+                color="primary"
+                size="4em"
+                v-show="isLoading"
+            />
+        </div>
+
         <q-btn label="Load More" @click="loadMore" v-if="hasMorePages" class="full-width" flat></q-btn>
         <q-page-sticky position="bottom-right" :offset="[25, 25]">
             <q-btn fab icon="add" color="accent" @click="navigateToAddReview" />
@@ -48,6 +57,7 @@ export default {
         return {
             tab: 'details',
             page: 1,
+            isLoading: true,
         };
     },
     async created() {
@@ -56,6 +66,7 @@ export default {
             dishId: this.$route.params.dishId,
             page: this.page,
         });
+        this.isLoading = false;
     },
     methods: {
         ...mapActions({
@@ -73,10 +84,12 @@ export default {
         },
         async loadMore() {
             this.page++;
+            this.isLoading = true;
             await this.fetchReviews({
                 dishId: this.$route.params.dishId,
                 page: this.page,
             });
+            this.isLoading = false;
         },
     },
     computed: {
