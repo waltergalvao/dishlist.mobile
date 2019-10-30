@@ -50,12 +50,6 @@ export default {
             currentSlide: null,
         };
     },
-    props: {
-        restaurant: {
-            type: Object,
-            required: true,
-        },
-    },
     created() {
         this.currentSlide = this.featuredItems[0].id || null;
     },
@@ -68,7 +62,10 @@ export default {
         navigateToDish(item) {
             this.$router.push({
                 name: 'restaurant.menu.dish',
-                params: {restaurantId: this.restaurant.id, dishId: item.id},
+                params: {
+                    restaurantId: this.$route.params.restaurantId,
+                    dishId: item.id,
+                },
             });
         },
     },

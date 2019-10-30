@@ -68,15 +68,6 @@ export default {
     border-radius: 4px;
 }
 
-.q-rating__icon {
-    text-shadow: none !important;
-    color: #ccc;
-}
-
-.q-rating__icon--active {
-    color: $yellow;
-}
-
 .q-item {
     padding: 25px 16px;
 }

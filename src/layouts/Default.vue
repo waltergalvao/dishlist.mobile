@@ -57,7 +57,7 @@ export default {
             this.backRoute = value;
         },
         goBack() {
-            this.$router.go(-1);
+            this.$router.push(this.backRoute);
         },
     },
     computed: {
