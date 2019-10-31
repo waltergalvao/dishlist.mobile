@@ -7,8 +7,8 @@
     "add_env_to_gitignore": true
   },
   "@quasar/icon-genie": {
-    "minify_dev": "zopfli",
-    "minify_build": "zopfli",
+    "minify_dev": "pngquant",
+    "minify_build": "optipng",
     "cordova": {
       "background_color": "#fff",
       "splashscreen_type": "generate"
@@ -18,6 +18,12 @@
       "dev": {
         "spa": {
           "iconHash": "5bd47b66c9e38556616892324eafd0a4"
+        },
+        "cordova": {
+          "iconHash": "5bd47b66c9e38556616892324eafd0a4",
+          "splashscreenHash": false,
+          "splashscreenType": "generate",
+          "backgroundColor": "#fff"
         }
       },
       "build": {
