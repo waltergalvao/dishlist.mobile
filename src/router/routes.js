@@ -18,6 +18,15 @@ const routes = [
                 },
             },
             {
+                name: 'restaurant.review',
+                path: 'restaurant/:restaurantId/dish/:dishId/review',
+                component: () => import('pages/AddReview.vue'),
+                meta: {
+                    showBackButton: true,
+                    showNavigation: false,
+                },
+            },
+            {
                 name: 'home',
                 path: '/',
                 component: () => import('pages/Home.vue'),

@@ -1,97 +1,62 @@
 <template>
-    <q-page id="searchRestaurantScreen">
-        <div class="fixed-center">
+    <q-page>
+        <div class="q-pa-sm q-mt-sm">
             <q-input
+                outlined
+                ref="restaurantNameInput"
                 v-model="restaurantName"
                 label="Restaurant Name.."
-                class="setWidth dishlist-searchbar"
+                type="text"
+                clearable
+                @keyup="searchRestaurant()"
             >
                 <template v-slot:append>
                     <q-icon name="search" />
                 </template>
             </q-input>
+        </div>
 
-            <br />
-
-            <q-btn
-                @click="searchRestaurant()"
-                width="60%"
-                :dense="$q.screen.xs"
-                no-caps
-                label="Search"
-                color="secondary"
-                text-color="color:rgba(0, 0, 0, 0.6)"
-            >
-            </q-btn>
+        <div class="q-pa-sm" v-if="restaurantList">
+            <q-list>
+                <div>
+                    <restaurant-details
+                        v-for="(restaurant, key) in restaurantList"
+                        :restaurant="restaurant"
+                        :key="key"
+                    />
+                </div>
+            </q-list>
         </div>
     </q-page>
 </template>
 
 <script>
 import {mapActions, mapState} from 'vuex';
+import RestaurantDetails from '../components/RestaurantItem';
 
 export default {
+    name: 'RestaurantSearchList',
+    components: {RestaurantDetails},
     data() {
         return {
-            restaurantName: 'Veggie Bowl',
-            restaurantList: [],
+            restaurantName: '',
         };
     },
-
-    name: 'RestaurantSearchList',
-
-    async created() {
-        this.$emit('updateTitle', 'DishList');
-        this.restaurantList = this.$store.state.restaurant;
+    mounted() {
+        this.$refs.restaurantNameInput.focus();
     },
-
     methods: {
         ...mapActions({
             fetchRestaurant: 'fetchRestaurant',
         }),
-        searchRestaurant() {
-            this.$store.dispatch('fetchRestaurant', {
-                restaurantName: this.restaurantName,
-            });
-            //this.$router.push("/place/:placeName/menu")
+        async searchRestaurant() {
+            await this.fetchRestaurant(this.restaurantName);
         },
     },
-
     computed: {
         ...mapState({
-            restaurant: state => state.restaurant.restaurant,
+            restaurantList: state => state.restaurant.restaurant,
         }),
     },
 };
 </script>
-
-<style lang="scss">
-#searchRestaurantScreen {
-    background-image: url('~assets/bg-search-screen.jpg');
-}
-
-.setWidth {
-    width: 100%;
-    font-weight: strong;
-}
-
-.fixed-center {
-    width: 80%;
-    position: absolute;
-    z-index: 999;
-}
-
-.dishlist-searchbar {
-    background-color: white;
-}
-.q-field--focused {
-    border: 4px solid green;
-    color: blue;
-}
-.q-field--focused .q-field__label {
-    color: green !important;
-}
-.setWidth {
-    width: 100%;
-}
-</style>

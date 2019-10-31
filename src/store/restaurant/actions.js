@@ -1,15 +1,15 @@
 import {SET_RESTAURANT} from '../mutationTypes';
-//import dishlistApiRequests from '../../boot/axios';
+
 export default {
-    fetchRestaurant({commit}, params) {
+    fetchRestaurant({commit}, restaurantName) {
         return this._vm.$axios
-            .get(
-                'http://dishlist.wmdd.ca/api/restaurant/read.php?name=' +
-                    params.restaurantName,
-            )
+            .get('/restaurant/read.php?name=' + restaurantName)
             .then(response => {
-                console.log(response.data);
                 commit(SET_RESTAURANT, response.data);
+            })
+            .catch(err => {
+                console.log(err);
+                commit(SET_RESTAURANT, []);
             });
     },
 };
