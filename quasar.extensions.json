@@ -10,7 +10,7 @@
     "minify_dev": "pngquant",
     "minify_build": "optipng",
     "cordova": {
-      "background_color": "#000074",
+      "background_color": "#fff",
       "splashscreen_type": "generate"
     },
     "build_always": true,
@@ -23,7 +23,7 @@
           "iconHash": "5bd47b66c9e38556616892324eafd0a4",
           "splashscreenHash": false,
           "splashscreenType": "generate",
-          "backgroundColor": "#000074"
+          "backgroundColor": "#fff"
         }
       },
       "build": {
@@ -31,7 +31,7 @@
           "iconHash": "5bd47b66c9e38556616892324eafd0a4",
           "splashscreenHash": false,
           "splashscreenType": "generate",
-          "backgroundColor": "#000074"
+          "backgroundColor": "#fff"
         }
       }
     }

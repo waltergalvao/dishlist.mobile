@@ -6,12 +6,15 @@
         class="drawer"
     >
         <div class="drawer__header">
-            <div class="text-white q-pa-md">
-                <!--                <q-avatar>-->
-                <!--                    <img src="~assets/avatar.png" class="drawer__avatar" />-->
-                <!--                </q-avatar>-->
-                <div class="text-weight-bold drawer__name">Jhon Doe</div>
-                <div>johndoe@gmail.com</div>
+            <div class="text-white q-pa-md" v-if="isAuthenticated">
+               <q-avatar>
+                   <img src="~assets/avatar.png" class="drawer__avatar" />
+               </q-avatar>
+                <div class="text-weight-bold drawer__name">{{username}}</div>
+                <div>{{email}}</div>
+            </div>
+            <div class="text-white q-pa-md" v-else>
+                <div class="text-weight-bold drawer__name">Welcome</div>
             </div>
         </div>
 
@@ -22,8 +25,7 @@
                 clickable
                 v-ripple
                 :to="{name: 'home'}"
-                active-class="menu--active"
-            >
+                active-class="menu--active">
                 <q-item-section avatar>
                     <q-icon name="fas fa-qrcode" />
                 </q-item-section>
@@ -35,8 +37,7 @@
                 clickable
                 v-ripple
                 :to="{name: 'restaurant.search'}"
-                active-class="menu--active"
-            >
+                active-class="menu--active">
                 <q-item-section avatar>
                     <q-icon name="search" />
                 </q-item-section>
@@ -47,7 +48,33 @@
             <q-separator spaced />
 
             <q-item-label header>User</q-item-label>
-            <q-item clickable v-ripple>
+            <q-item
+                v-if="!isAuthenticated"
+                clickable
+                v-ripple
+                :to="{name : 'login'}">
+                <q-item-section avatar>
+                    <q-icon name="fas fa-sign-in-alt" />
+                </q-item-section>
+
+                <q-item-section>Login</q-item-section>
+            </q-item>
+            <q-item
+                v-if="!isAuthenticated"
+                clickable
+                v-ripple
+                :to="{name : 'register'}">
+                <q-item-section avatar>
+                    <q-icon class="fas fa-user-plus" />
+                </q-item-section>
+
+                <q-item-section>Register</q-item-section>
+            </q-item>
+            <q-item
+                v-if="isAuthenticated"
+                clickable
+                v-ripple
+                @click="logout">
                 <q-item-section avatar>
                     <q-icon name="fas fa-sign-out-alt" />
                 </q-item-section>
@@ -67,10 +94,29 @@ export default {
         ...mapActions({
             setNavigationDrawerState: 'setNavigationDrawerState',
         }),
+        logout() {
+            this.$store.dispatch('doLogout')
+            .then(() => {
+                if (this.$router.currentRoute.name !== 'home') {
+                    this.$router.push({
+                        name: 'home'
+                    })
+                }
+            }).catch((error) => {
+                let msg = error;
+                if (error.response && error.response.data && error.response.data.message) {
+                    msg = error.response.data.message;
+                }
+                this.$q.notify(msg);
+            });
+        }
     },
     computed: {
         ...mapState({
             isOpen: state => state.ui.drawer.isOpen,
+            isAuthenticated: state => state.login.auth.isAuthenticated(),
+            username: state => state.login.auth.username,
+            email: state => state.login.auth.email
         }),
     },
 };
