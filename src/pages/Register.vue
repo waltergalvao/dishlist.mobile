@@ -44,6 +44,9 @@ export default {
             password: '',
         };
     },
+    created() {
+        this.$emit('updateTitle', 'Register');
+    },
     components: {
         DishEmailInput
     },
