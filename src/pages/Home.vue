@@ -9,14 +9,17 @@
             >
                 <div
                     class="absolute-bottom text-subtitle1 text-center q-pa-xs search-restaurant__overlay"
-                >Scan QR Code</div>
+                >
+                    Scan QR Code
+                </div>
             </q-img>
             <q-btn
                 color="primary"
                 class="q-ma-lg"
                 outline
                 :to="{name: 'restaurant.search'}"
-            >or search by name</q-btn>
+                >or search by name</q-btn
+            >
         </div>
     </q-page>
 </template>
