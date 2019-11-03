@@ -2,7 +2,6 @@
     <q-page>
         <div class="q-pa-md fixed-center" style="max-width: 400px">
             <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
-
                 <dish-email-input v-model="email"></dish-email-input>
 
                 <q-input
@@ -11,12 +10,22 @@
                     v-model="password"
                     label="Your password *"
                     lazy-rules
-                    :rules="[val => val !== null && val !== '' || 'Please type your password']"
+                    :rules="[
+                        val =>
+                            (val !== null && val !== '') ||
+                            'Please type your password',
+                    ]"
                 />
 
                 <div>
                     <q-btn label="Log In" type="submit" color="primary" />
-                    <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
+                    <q-btn
+                        label="Reset"
+                        type="reset"
+                        color="primary"
+                        flat
+                        class="q-ml-sm"
+                    />
                 </div>
             </q-form>
         </div>
@@ -69,7 +78,7 @@ export default {
                     }
                     this.$q.notify(msg);
                 });
-        }
+        },
     },
     computed: {
         ...mapState({}),

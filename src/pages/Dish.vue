@@ -16,11 +16,11 @@
 
         <q-tab-panels v-model="tab" animated>
             <q-tab-panel name="details">
-                <dish-details/>
+                <dish-details />
             </q-tab-panel>
 
             <q-tab-panel name="reviews">
-                <dish-review-list/>
+                <dish-review-list />
             </q-tab-panel>
 
             <q-tab-panel name="photos" class="no-padding">

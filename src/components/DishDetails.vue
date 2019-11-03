@@ -47,7 +47,7 @@ import VeganTag from './_dumb/VVeganTag';
 import VegetarianTag from './_dumb/VVegetarianTag';
 import SpicyTag from './_dumb/VSpicyTag';
 import AverageTime from './_dumb/VAverageTime';
-import {mapState} from "vuex";
+import {mapState} from 'vuex';
 
 export default {
     name: 'DishDetails',

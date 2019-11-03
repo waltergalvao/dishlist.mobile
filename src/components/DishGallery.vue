@@ -28,19 +28,23 @@
         </div>
 
         <q-page-sticky position="bottom-right" :offset="[25, 25]">
-            <q-btn fab icon="add" color="accent" @click="addPhotoDialog = true" />
+            <q-btn
+                fab
+                icon="add"
+                color="accent"
+                @click="addPhotoDialog = true"
+            />
         </q-page-sticky>
 
-        <q-dialog
-            v-model="addPhotoDialog"
-        >
+        <q-dialog v-model="addPhotoDialog">
             <q-card style="width: 300px">
                 <q-card-section>
                     <div class="text-h6">Sorry</div>
                 </q-card-section>
 
                 <q-card-section>
-                    This feature will be available in the next version of this app.
+                    This feature will be available in the next version of this
+                    app.
                 </q-card-section>
 
                 <q-card-actions align="right" class="bg-white text-teal">
@@ -70,7 +74,7 @@ export default {
     methods: {
         addPhoto() {
             alert('We do not support this feature yet');
-        }
+        },
     },
     computed: {
         ...mapState({

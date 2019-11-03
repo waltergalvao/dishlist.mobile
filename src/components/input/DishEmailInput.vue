@@ -5,14 +5,14 @@
         v-model="emailInputText"
         label="Your e-mail *"
         lazy-rules
-        :rules="[ emailValidation ]"
+        :rules="[emailValidation]"
     />
 </template>
 
 <script>
 export default {
     name: 'DishEmailInput',
-        props: ['value'],
+    props: ['value'],
     computed: {
         emailInputText: {
             get() {
@@ -20,8 +20,8 @@ export default {
             },
             set(val) {
                 this.$emit('input', val);
-            }
-        }
+            },
+        },
     },
     methods: {
         emailValidation(val) {
@@ -54,6 +54,6 @@ export default {
                 return 'Please enter a valid e-mail';
             }
         },
-    }
+    },
 };
 </script>
