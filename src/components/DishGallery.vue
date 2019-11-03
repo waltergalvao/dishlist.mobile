@@ -4,7 +4,7 @@
             Those photos are uploaded by customers and contain unmoderated data.
         </q-banner>
 
-        <div class="gallery__photos" v-if="images.count > 0">
+        <div class="gallery__photos" v-if="images.length > 0">
             <gallery
                 :images="images"
                 :index="index"
