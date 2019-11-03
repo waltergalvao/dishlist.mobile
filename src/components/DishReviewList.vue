@@ -35,7 +35,7 @@
             />
         </div>
 
-        <q-btn label="Load More" @click="loadMore" v-if="hasMorePages" class="full-width" flat></q-btn>
+        <q-btn label="Load More" @click="loadMore" v-if="hasMorePages" v-show="!isLoading" class="full-width" flat></q-btn>
         <q-page-sticky position="bottom-right" :offset="[25, 25]">
             <q-btn fab icon="add" color="accent" @click="navigateToAddReview" />
         </q-page-sticky>

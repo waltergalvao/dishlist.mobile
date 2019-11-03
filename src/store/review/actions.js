@@ -12,19 +12,15 @@ export default {
                 console.log('deu load')
             });
     },
+    // eslint-disable-next-line no-unused-vars
     createReview({commit}, {dishId, data}) {
-        console.log(commit);
-
         return this._vm.$axios
             .post('/review/create.php?id=' + dishId, data, {
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
             })
-            .then(response => {
-                console.log(response);
-                return true;
-            })
+            .then(() => true)
             .catch(error => {
                 console.log(error);
                 return false;
