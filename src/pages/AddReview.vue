@@ -77,7 +77,7 @@ export default {
                     dishId: this.$route.params.dishId,
                 },
             };
-        }
-    }
+        },
+    },
 };
 </script>
