@@ -14,7 +14,7 @@
                 :key="index"
                 class="photos__item"
                 :name="index"
-                :img-src="photo.url"
+                :img-src="photo"
             >
                 <div
                     class="absolute-bottom custom-caption bg-dark-separator q-pa-sm photos__bg flex justify-between"
@@ -51,7 +51,7 @@ export default {
         rating: {
             type: String,
             required: true,
-        }
+        },
     },
 };
 </script>

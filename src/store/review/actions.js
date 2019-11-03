@@ -9,7 +9,6 @@ export default {
             .get('/review/read.php?id=' + dishId + '&page=' + page)
             .then(response => {
                 commit(LOAD_REVIEWS, response.data);
-                console.log('deu load')
             });
     },
     // eslint-disable-next-line no-unused-vars

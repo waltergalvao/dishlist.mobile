@@ -1,9 +1,13 @@
 <template>
     <div class="reviews">
-        <div class="text-orange no-margin text-h3 text-center flex justify-center ">
-            <q-icon name="star"/> {{ dish.rating }}
+        <div
+            class="text-orange no-margin text-h3 text-center flex justify-center "
+        >
+            <q-icon name="star" /> {{ dish.rating }}
         </div>
-        <div class="text-weight-light text-center">{{ reviewData.pagination.total_reviews }} reviews</div>
+        <div class="text-weight-light text-center">
+            {{ reviewData.pagination.total_reviews }} reviews
+        </div>
         <q-list class="q-mt-sm">
             <div v-for="review in reviewData.reviews" :key="review.id">
                 <q-item>
@@ -28,14 +32,17 @@
         </q-list>
 
         <div class="text-center">
-            <q-spinner-dots
-                color="primary"
-                size="4em"
-                v-show="isLoading"
-            />
+            <q-spinner-dots color="primary" size="4em" v-show="isLoading" />
         </div>
 
-        <q-btn label="Load More" @click="loadMore" v-if="hasMorePages" v-show="!isLoading" class="full-width" flat></q-btn>
+        <q-btn
+            label="Load More"
+            @click="loadMore"
+            v-if="hasMorePages"
+            v-show="!isLoading"
+            class="full-width"
+            flat
+        ></q-btn>
         <q-page-sticky position="bottom-right" :offset="[25, 25]">
             <q-btn fab icon="add" color="accent" @click="navigateToAddReview" />
         </q-page-sticky>
@@ -47,12 +54,6 @@ import {mapActions, mapState} from 'vuex';
 
 export default {
     name: 'DishReviewList',
-    props: {
-        dish: {
-            type: Object,
-            required: true,
-        },
-    },
     data() {
         return {
             tab: 'details',
@@ -95,6 +96,7 @@ export default {
     computed: {
         ...mapState({
             reviewData: state => state.review,
+            dish: state => state.dish.dish,
         }),
         hasMorePages() {
             return (

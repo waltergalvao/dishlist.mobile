@@ -1,7 +1,7 @@
 <template>
     <q-page class="dish" v-if="dish">
         <dish-header
-            :photos="dish.photos"
+            :photos="[dish.thumbnail]"
             :dish-name="dish.name"
             :rating="dish.rating"
         />
@@ -14,24 +14,17 @@
 
         <q-separator />
 
-        <q-tab-panels v-model="tab" animated swipeable>
+        <q-tab-panels v-model="tab" animated>
             <q-tab-panel name="details">
-                <dish-details :dish="dish" />
+                <dish-details />
             </q-tab-panel>
 
             <q-tab-panel name="reviews">
-                <dish-review-list :dish="dish"/>
+                <dish-review-list />
             </q-tab-panel>
 
             <q-tab-panel name="photos" class="no-padding">
-                <q-banner dense class="bg-blue-3 text-white">
-                    Those photos are uploaded by customers and contain
-                    unmoderated data.
-                </q-banner>
-
-                <div class="q-pa-md">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </div>
+                <dish-gallery />
             </q-tab-panel>
         </q-tab-panels>
     </q-page>
@@ -42,10 +35,16 @@ import {mapActions, mapState} from 'vuex';
 import DishHeader from '../components/DishHeader';
 import DishDetails from '../components/DishDetails';
 import DishReviewList from '../components/DishReviewList';
+import DishGallery from '../components/DishGallery';
 
 export default {
     name: 'Dish',
-    components: {DishReviewList, DishDetails, DishHeader},
+    components: {DishGallery, DishReviewList, DishDetails, DishHeader},
+    data() {
+        return {
+            tab: 'details',
+        };
+    },
     async created() {
         await this.fetchDish(this.$route.params.dishId);
         this.$emit('updateTitle', this.dish.name);
@@ -56,11 +55,10 @@ export default {
                 dishId: this.dish.id,
             },
         });
-    },
-    data() {
-        return {
-            tab: 'details',
-        };
+
+        if (this.$route.query.tab) {
+            this.tab = this.$route.query.tab;
+        }
     },
     methods: {
         ...mapActions({

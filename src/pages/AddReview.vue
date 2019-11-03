@@ -76,8 +76,11 @@ export default {
                     restaurantId: this.$route.params.restaurantId,
                     dishId: this.$route.params.dishId,
                 },
+                query: {
+                    tab: 'reviews',
+                },
             };
-        }
-    }
+        },
+    },
 };
 </script>

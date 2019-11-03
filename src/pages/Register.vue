@@ -8,7 +8,11 @@
                     v-model="username"
                     label="Your name *"
                     lazy-rules
-                    :rules="[val => val !== null && val !== '' || 'Please type your name']"
+                    :rules="[
+                        val =>
+                            (val !== null && val !== '') ||
+                            'Please type your name',
+                    ]"
                 />
 
                 <dish-email-input v-model="email"></dish-email-input>
@@ -19,12 +23,22 @@
                     v-model="password"
                     label="Your password *"
                     lazy-rules
-                    :rules="[val => val !== null && val !== '' || 'Please type your password']"
+                    :rules="[
+                        val =>
+                            (val !== null && val !== '') ||
+                            'Please type your password',
+                    ]"
                 />
 
                 <div>
                     <q-btn label="Register" type="submit" color="primary" />
-                    <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
+                    <q-btn
+                        label="Reset"
+                        type="reset"
+                        color="primary"
+                        flat
+                        class="q-ml-sm"
+                    />
                 </div>
             </q-form>
         </div>
@@ -48,7 +62,7 @@ export default {
         this.$emit('updateTitle', 'Register');
     },
     components: {
-        DishEmailInput
+        DishEmailInput,
     },
     methods: {
         ...mapActions({}),
@@ -80,7 +94,7 @@ export default {
                     }
                     this.$q.notify(msg);
                 });
-        }
+        },
     },
     computed: {
         ...mapState({}),

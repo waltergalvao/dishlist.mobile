@@ -26,7 +26,12 @@
         <vegan-tag v-if="dish.is_vegan" />
         <vegetarian-tag v-else-if="dish.is_vegetarian" />
 
-        <q-list bordered separator class="details__ingredients" v-if="dish.ingredients.length">
+        <q-list
+            bordered
+            separator
+            class="details__ingredients"
+            v-if="dish.ingredients.length"
+        >
             <q-item
                 v-for="(ingredient, index) in dish.ingredients"
                 :key="index"
@@ -42,15 +47,15 @@ import VeganTag from './_dumb/VVeganTag';
 import VegetarianTag from './_dumb/VVegetarianTag';
 import SpicyTag from './_dumb/VSpicyTag';
 import AverageTime from './_dumb/VAverageTime';
+import {mapState} from 'vuex';
 
 export default {
     name: 'DishDetails',
     components: {AverageTime, SpicyTag, VegetarianTag, VeganTag},
-    props: {
-        dish: {
-            type: Object,
-            required: true,
-        },
+    computed: {
+        ...mapState({
+            dish: state => state.dish.dish,
+        }),
     },
 };
 </script>
