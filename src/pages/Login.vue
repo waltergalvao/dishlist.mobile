@@ -35,6 +35,9 @@ export default {
             password: '',
         };
     },
+    created() {
+        this.$emit('updateTitle', 'Login');
+    },
     components: {
         DishEmailInput,
     },
