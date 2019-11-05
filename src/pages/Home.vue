@@ -44,16 +44,29 @@ export default {
             fetchMenu: 'fetchMenu',
         }),
         scanQRcode() {
-            let vueMethodsObj = this;
-            cordova.plugins.barcodeScanner.scan(function(result) {
-                console.log(result);
-                vueMethodsObj.$store.dispatch('fetchMenu', {
-                    restaurantId: result.text,
-                });
-                vueMethodsObj.$router.push(
-                    '/restaurant/' + result.text + '/menu',
-                );
+            let combinedVueInstance = this;
+
+            combinedVueInstance.$q.loading.show({
+                delay: 400,
             });
+
+            cordova.plugins.barcodeScanner.scan(
+                result => {
+                    this.$q.loading.hide();
+                    if (result && result.cancelled !== 1 && result.text) {
+                        combinedVueInstance.$store.dispatch('fetchMenu', {
+                            restaurantId: result.text,
+                        });
+                        combinedVueInstance.$router.push(
+                            '/restaurant/' + result.text + '/menu',
+                        );
+                    }
+                },
+                error => {
+                    this.$q.loading.hide();
+                    this.$q.notify(error);
+                },
+            );
         },
     },
     computed: {
@@ -63,6 +76,7 @@ export default {
             categories: state => state.menu.categories,
         }),
     },
+    plugins: ['Loading'],
 };
 </script>
 
