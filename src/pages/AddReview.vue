@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import {mapActions} from 'vuex';
+import {mapActions, mapGetters} from 'vuex';
 
 export default {
     name: 'AddReview',
@@ -47,6 +47,15 @@ export default {
         };
     },
     created() {
+        if (this.isUserLoggedIn === false) {
+            this.$router.push({
+                name: 'login',
+                query: {
+                    redirectTo: this.$route.path,
+                },
+            });
+        }
+
         this.$emit('updateBackRoute', this.backRoute);
     },
     methods: {
@@ -69,6 +78,7 @@ export default {
         },
     },
     computed: {
+        ...mapGetters(['isUserLoggedIn']),
         backRoute() {
             return {
                 name: 'restaurant.menu.dish',

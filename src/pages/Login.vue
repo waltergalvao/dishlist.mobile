@@ -63,9 +63,17 @@ export default {
                     password: this.password,
                 })
                 .then(() => {
+                    if (this.$route.query.redirectTo) {
+                        this.$router.push(this.$route.query.redirectTo);
+                        this.$q.notify('Welcome ' + this.auth.username + '! You may now create your review.');
+                        return;
+                    }
+
                     this.$router.push({
                         name: 'home',
                     });
+
+                    this.$q.notify('Hello ' + this.auth.username + ' :)');
                 })
                 .catch(error => {
                     let msg = error;
@@ -81,7 +89,9 @@ export default {
         },
     },
     computed: {
-        ...mapState({}),
+        ...mapState({
+            auth: (state) => state.login.auth,
+        }),
     },
 };
 </script>
