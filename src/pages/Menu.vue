@@ -17,7 +17,7 @@
                     @click="changeTab('category-' + category.id)"
                 />
             </q-tabs>
-            <menu-filter v-show="showFilter" />
+            <menu-filter v-show="showFilter" :tags="tags" :categories="categories"/>
         </q-page-sticky>
 
         <menu-featured v-if="featuredItems.length && restaurant" />
@@ -50,6 +50,7 @@ import MenuItem from '../components/MenuItem';
 import {mapActions, mapState} from 'vuex';
 import MenuFilter from '../components/MenuFilter';
 import MenuFeatured from '../components/MenuFeatured';
+import _ from 'lodash';
 
 export default {
     name: 'PageIndex',
@@ -129,6 +130,18 @@ export default {
         }),
         currentCategoryElement() {
             return document.getElementById(this.currentCategory);
+        },
+        tags() {
+            let tags = _.map(this.categories, (category) => {
+                return _.map(category.items, (item) => {
+                    return item.tags;
+                });
+            });
+
+            tags = _.flattenDeep(tags);
+            tags = _.uniqBy(tags, 'id');
+
+            return tags;
         },
     },
 };

@@ -1,16 +1,52 @@
 <template>
-    <div class="options text-center" v-show="showFilter">
+    <div class="filter text-center">
         <q-btn-dropdown
             color="white"
             text-color="black"
             label="Filters"
-            rounded
             class="shadow-5"
+            @click="card = true"
         >
-            <q-list>
-                Filters
-            </q-list>
         </q-btn-dropdown>
+
+        <q-dialog v-model="card">
+            <q-card>
+                <q-card-section>
+                    <div class="text-subtitle1">Categories</div>
+                    <div class="filter__options">
+                        <q-checkbox
+                            v-for="category in categories"
+                            :key="category.id"
+                            v-model="filteredCategories"
+                            :val="category.id"
+                            :label="category.name"
+                            class="filter__checkbox"
+                        />
+                    </div>
+                </q-card-section>
+
+                <q-card-section>
+                    <div class="text-subtitle1">Traits</div>
+                    <div class="filter__options">
+                        <q-checkbox
+                            v-for="tag in tags"
+                            :key="tag.id"
+                            v-model="filteredTags"
+                            :val="tag.id"
+                            :label="tag.name"
+                            class="filter__checkbox"
+                        />
+                    </div>
+                </q-card-section>
+
+                <q-separator />
+
+                <q-card-actions align="around">
+                    <q-btn flat round v-close-popup color="grey-7">Cancel</q-btn>
+                    <q-btn flat color="primary" v-close-popup>Filter</q-btn>
+                </q-card-actions>
+            </q-card>
+        </q-dialog>
     </div>
 </template>
 
@@ -19,8 +55,20 @@ export default {
     name: 'MenuFilter',
     data() {
         return {
-            showFilter: false,
+            card: false,
+            filteredTags: [],
+            filteredCategories: [],
         };
+    },
+    props: {
+        tags: {
+            type: Array,
+            default: () => [],
+        },
+        categories: {
+            type: Array,
+            required: true,
+        },
     },
     created() {
         document.addEventListener('scroll', this.handleScroll);
@@ -40,9 +88,21 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
-.options {
+<style lang="scss">
+.filter {
     width: 100vw;
     padding: 10px;
+
+    &__options {
+        display: grid;
+        grid-gap: 0px 10px;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    &__checkbox {
+        .q-checkbox__label {
+            color: $grey-7;
+        }
+    }
 }
 </style>
