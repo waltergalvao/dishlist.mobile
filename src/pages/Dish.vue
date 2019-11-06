@@ -4,6 +4,7 @@
             :photos="[dish.thumbnail]"
             :dish-name="dish.name"
             :rating="dish.rating"
+            v-if="dish"
         />
 
         <q-tabs v-model="tab" class="" align="justify" narrow-indicator>

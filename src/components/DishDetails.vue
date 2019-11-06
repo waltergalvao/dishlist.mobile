@@ -1,5 +1,5 @@
 <template>
-    <q-page class="details">
+    <div class="details">
         <div class="row details__main">
             <div class="col details__price">
                 $23.50
@@ -22,9 +22,7 @@
             </div>
         </div>
         <p class="no-margin">{{ dish.description }}</p>
-        <spicy-tag v-if="dish.is_spicy" />
-        <vegan-tag v-if="dish.is_vegan" />
-        <vegetarian-tag v-else-if="dish.is_vegetarian" />
+        <dish-tags :tags="dish.tags" />
 
         <q-list
             bordered
@@ -39,19 +37,17 @@
                 <q-item-section>{{ ingredient.name }}</q-item-section>
             </q-item>
         </q-list>
-    </q-page>
+    </div>
 </template>
 
 <script>
-import VeganTag from './_dumb/VVeganTag';
-import VegetarianTag from './_dumb/VVegetarianTag';
-import SpicyTag from './_dumb/VSpicyTag';
 import AverageTime from './_dumb/VAverageTime';
 import {mapState} from 'vuex';
+import DishTags from './DishTags';
 
 export default {
     name: 'DishDetails',
-    components: {AverageTime, SpicyTag, VegetarianTag, VeganTag},
+    components: {DishTags, AverageTime},
     computed: {
         ...mapState({
             dish: state => state.dish.dish,

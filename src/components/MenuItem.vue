@@ -27,9 +27,7 @@
                 <q-item-section class="block item__tags">
                     <rating>{{ item.rating }}</rating>
                     <group-dish>2</group-dish>
-                    <spicy-tag v-if="item.is_spicy" />
-                    <vegan-tag v-if="item.is_vegan" />
-                    <vegetarian-tag v-else-if="item.is_vegetarian" />
+                    <dish-tags :tags="item.tags"/>
                 </q-item-section>
             </q-item-section>
         </q-item>
@@ -39,15 +37,13 @@
 </template>
 
 <script>
-import SpicyTag from './_dumb/VSpicyTag';
-import VeganTag from './_dumb/VVeganTag';
-import VegetarianTag from './_dumb/VVegetarianTag';
 import Rating from './_dumb/VRating';
 import GroupDish from './_dumb/VGroupDish';
+import DishTags from "./DishTags";
 
 export default {
     name: 'DishItem',
-    components: {GroupDish, Rating, VegetarianTag, VeganTag, SpicyTag},
+    components: {DishTags, GroupDish, Rating},
     props: {
         item: {
             type: Object,
