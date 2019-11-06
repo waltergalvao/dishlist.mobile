@@ -65,7 +65,11 @@ export default {
                 .then(() => {
                     if (this.$route.query.redirectTo) {
                         this.$router.push(this.$route.query.redirectTo);
-                        this.$q.notify('Welcome ' + this.auth.username + '! You may now create your review.');
+                        this.$q.notify(
+                            'Welcome ' +
+                                this.auth.username +
+                                '! You may now create your review.',
+                        );
                         return;
                     }
 
@@ -90,7 +94,7 @@ export default {
     },
     computed: {
         ...mapState({
-            auth: (state) => state.login.auth,
+            auth: state => state.login.auth,
         }),
     },
 };

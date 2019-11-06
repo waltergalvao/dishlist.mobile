@@ -27,7 +27,7 @@
                 <q-item-section class="block item__tags">
                     <rating>{{ item.rating }}</rating>
                     <group-dish>2</group-dish>
-                    <dish-tags :tags="item.tags"/>
+                    <dish-tags :tags="item.tags" />
                 </q-item-section>
             </q-item-section>
         </q-item>
@@ -39,7 +39,7 @@
 <script>
 import Rating from './_dumb/VRating';
 import GroupDish from './_dumb/VGroupDish';
-import DishTags from "./DishTags";
+import DishTags from './DishTags';
 
 export default {
     name: 'DishItem',

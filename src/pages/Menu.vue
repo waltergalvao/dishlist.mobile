@@ -17,7 +17,11 @@
                     @click="changeTab('category-' + category.id)"
                 />
             </q-tabs>
-            <menu-filter v-show="showFilter" :tags="tags" :categories="categories"/>
+            <menu-filter
+                v-show="showFilter"
+                :tags="tags"
+                :categories="categories"
+            />
         </q-page-sticky>
 
         <menu-featured v-if="featuredItems.length && restaurant" />
@@ -132,8 +136,8 @@ export default {
             return document.getElementById(this.currentCategory);
         },
         tags() {
-            let tags = _.map(this.categories, (category) => {
-                return _.map(category.items, (item) => {
+            let tags = _.map(this.categories, category => {
+                return _.map(category.items, item => {
                     return item.tags;
                 });
             });

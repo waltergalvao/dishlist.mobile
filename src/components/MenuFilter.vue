@@ -42,7 +42,9 @@
                 <q-separator />
 
                 <q-card-actions align="around">
-                    <q-btn flat round v-close-popup color="grey-7">Cancel</q-btn>
+                    <q-btn flat round v-close-popup color="grey-7"
+                        >Cancel</q-btn
+                    >
                     <q-btn flat color="primary" v-close-popup>Filter</q-btn>
                 </q-card-actions>
             </q-card>

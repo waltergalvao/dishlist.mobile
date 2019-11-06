@@ -7,8 +7,7 @@
 </template>
 
 <script>
-
-import Tag from "./_dumb/VTag";
+import Tag from './_dumb/VTag';
 export default {
     name: 'DishTags',
     components: {Tag},

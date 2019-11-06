@@ -1,5 +1,5 @@
 <template>
-    <q-chip outline class="no-border" :style="{'color': color}" dense>
+    <q-chip outline class="no-border" :style="{color: color}" dense>
         <slot></slot>
     </q-chip>
 </template>
