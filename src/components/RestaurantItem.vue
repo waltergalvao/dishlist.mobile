@@ -20,13 +20,11 @@
                     >{{ restaurant.street_name }} {{ restaurant.city }}
                 </q-item-label>
 
-                <q-item-label caption class="item__description summary"
+                <q-item-label lines="2" caption class="item__description summary"
                     >{{ restaurant.description }}
                 </q-item-label>
 
-                <q-item-label caption class="item__description dark"
-                    >{{ restaurant.website }}
-                </q-item-label>
+                <a v-bind:href="restaurant.website" class="item__description websiteLink"> {{restaurant.website}} </a>
             </q-item-section>
         </q-item>
 
@@ -47,18 +45,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.q-item__section--thumbnail img {
-    width: 96px;
-    height: 96px;
-    border-radius: 4px;
-}
-
-.q-item {
-    padding: 25px 16px;
-}
 
 .dark {
-    color: rgb(26, 26, 26);
+    color: #000;
+    font-weight: strong;
+    font-size: .9rem;
 }
 
 .summary {
@@ -67,5 +58,6 @@ export default {
 
 .title {
     margin-bottom: 0;
+    font-size: 1.2rem;
 }
 </style>

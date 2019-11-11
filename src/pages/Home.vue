@@ -49,6 +49,7 @@ export default {
             homeScreenCafe: 'statics/home-cafe.png',
             homeScreensStrawberryImg: 'statics/home-strawberry-img.png',
             homeScreensStrawberries2Img: 'statics/home-strawberries-2-img.png',
+            
         };
     },
     created() {
