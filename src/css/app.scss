@@ -13,11 +13,6 @@
     z-index: 1000000 !important;
 }
 
-.linkText{
-    color: blue;
-    text-decoration: underline;
-}
-
 #qrCode{
     margin:3em;
 }
@@ -33,4 +28,22 @@
 
 .q-rating__icon--active {
     color: $orange !important;
+}
+
+.width85 {
+    width: 85%;
+}
+
+.q-item__section--thumbnail img {
+    width: 96px;
+    height: 96px;
+    border-radius: 4px;
+}
+
+.q-item {
+    padding: 25px 16px;
+}
+
+a.websiteLink {
+    text-decoration: none;
 }
