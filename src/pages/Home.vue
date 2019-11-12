@@ -38,10 +38,12 @@ export default {
     },
     created() {
         this.$emit('updateTitle', 'DishList');
+        this.resetMenu();
     },
     methods: {
         ...mapActions({
             fetchMenu: 'fetchMenu',
+            resetMenu: 'resetMenu',
         }),
         scanQRcode() {
             let combinedVueInstance = this;

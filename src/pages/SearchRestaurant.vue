@@ -43,11 +43,13 @@ export default {
         };
     },
     mounted() {
+        this.resetMenu();
         this.$refs.restaurantNameInput.focus();
     },
     methods: {
         ...mapActions({
             fetchRestaurant: 'fetchRestaurant',
+            resetMenu: 'resetMenu',
         }),
         async searchRestaurant() {
             await this.fetchRestaurant(this.restaurantName);

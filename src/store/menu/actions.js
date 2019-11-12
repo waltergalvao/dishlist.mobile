@@ -1,5 +1,4 @@
 import {SET_MENU} from '../mutationTypes';
-//import restaurants from '../../boot/axios';
 
 export default {
     fetchMenu({commit}, restaurantId) {
@@ -12,18 +11,11 @@ export default {
                 console.log(err);
             });
     },
-
-    SearchMenu({commit}, params) {
-        return this._vm.$axios
-            .get(
-                'http://dishlist.wmdd.ca/api/menu/read.php?id=' +
-                    params.restaurantId,
-            )
-            .then(response => {
-                commit(SET_MENU, response.data);
-            })
-            .catch(err => {
-                console.log(err);
-            });
+    resetMenu({commit}) {
+        commit(SET_MENU, {
+            place: {},
+            categories: [],
+            featuredItems: [],
+        });
     },
 };
