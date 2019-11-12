@@ -1,9 +1,9 @@
-import {FILTER_MENU, SET_MENU} from '../mutationTypes';
+import {FILTER_MENU, RESET_MENU, SET_MENU} from '../mutationTypes';
 
 export default {
     fetchMenu({commit}, restaurantId) {
         return this._vm.$axios
-            .get('http://dishlist.wmdd.ca/api/menu/read.php?id=' + restaurantId)
+            .get('/menu/read.php?id=' + restaurantId)
             .then(response => {
                 commit(SET_MENU, response.data);
             })
@@ -12,13 +12,7 @@ export default {
             });
     },
     resetMenu({commit}) {
-        commit(SET_MENU, {
-            place: {},
-            categories: [],
-            featuredItems: [],
-            filteredCategories: [],
-            filteredTags: [],
-        });
+        commit(RESET_MENU);
     },
     filterMenu({commit}, filters) {
         commit(FILTER_MENU, filters);

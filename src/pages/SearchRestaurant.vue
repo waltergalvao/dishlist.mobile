@@ -50,7 +50,6 @@ export default {
         };
     },
     mounted() {
-        this.resetMenu();
         this.$refs.restaurantNameInput.focus();
     },
     methods: {

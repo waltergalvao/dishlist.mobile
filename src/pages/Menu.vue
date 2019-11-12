@@ -1,6 +1,6 @@
 <template>
     <q-page class="menu">
-        <q-page-sticky position="top">
+        <q-page-sticky position="top" v-if="categories">
             <q-tabs
                 class="text-accent shadow-5 bg-white"
                 v-model="currentCategory"
@@ -17,10 +17,7 @@
                     @click="changeTab('category-' + category.id)"
                 />
             </q-tabs>
-            <menu-filter
-                :tags="tags"
-                :categories="allCategories"
-            />
+            <menu-filter :tags="tags" :categories="allCategories" />
         </q-page-sticky>
 
         <menu-featured v-if="featuredItems.length && restaurant" />
@@ -42,7 +39,10 @@
                         :restaurant="restaurant"
                         :key="item.id"
                     />
-                    <p v-if="filterItemsByTags(category).length === 0" class="text-center text-weight-light">
+                    <p
+                        v-if="filterItemsByTags(category).length === 0"
+                        class="text-center text-weight-light"
+                    >
                         No results found, try changing the filters.
                     </p>
                 </div>
@@ -69,10 +69,12 @@ export default {
         };
     },
     async created() {
+        this.$q.loading.show();
         await this.fetchMenu(this.$route.params.restaurantId);
         this.$emit('updateTitle', this.restaurant.name);
         this.currentCategory = 'category-' + this.categories[0].id;
         document.addEventListener('scroll', this.handleScroll);
+        this.$q.loading.hide();
     },
     destroyed() {
         document.removeEventListener('scroll', this.handleScroll);

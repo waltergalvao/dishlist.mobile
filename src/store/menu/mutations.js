@@ -1,4 +1,4 @@
-import {FILTER_MENU, SET_MENU} from '../mutationTypes';
+import {FILTER_MENU, RESET_MENU, SET_MENU} from '../mutationTypes';
 
 export default {
     [SET_MENU]: (state, menu) => {
@@ -10,5 +10,12 @@ export default {
     [FILTER_MENU]: (state, filters) => {
         state.filteredCategories = filters.categories;
         state.filteredTags = filters.tags;
+    },
+    [RESET_MENU]: state => {
+        state.place = {};
+        state.categories = [];
+        state.featuredItems = [];
+        state.filteredCategories = [];
+        state.filteredTags = [];
     },
 };

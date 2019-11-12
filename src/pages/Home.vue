@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import {mapActions, mapState} from 'vuex';
+import {mapActions} from 'vuex';
 
 export default {
     name: 'Home',
@@ -62,7 +62,6 @@ export default {
     },
     created() {
         this.$emit('updateTitle', 'DishList');
-        this.resetMenu();
     },
     methods: {
         ...mapActions({
@@ -70,9 +69,7 @@ export default {
             resetMenu: 'resetMenu',
         }),
         scanQRcode() {
-            let combinedVueInstance = this;
-
-            combinedVueInstance.$q.loading.show({
+            this.$q.loading.show({
                 delay: 400,
             });
 
@@ -80,10 +77,8 @@ export default {
                 result => {
                     this.$q.loading.hide();
                     if (result && result.cancelled !== 1 && result.text) {
-                        combinedVueInstance.$store.dispatch('fetchMenu', {
-                            restaurantId: result.text,
-                        });
-                        combinedVueInstance.$router.push(
+                        this.resetMenu();
+                        this.$router.push(
                             '/restaurant/' + result.text + '/menu',
                         );
                     }
@@ -94,13 +89,6 @@ export default {
                 },
             );
         },
-    },
-    computed: {
-        ...mapState({
-            featuredItems: state => state.menu.featuredItems,
-            place: state => state.menu.place,
-            categories: state => state.menu.categories,
-        }),
     },
     plugins: ['Loading'],
 };
