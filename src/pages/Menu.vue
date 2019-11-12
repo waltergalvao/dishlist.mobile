@@ -18,9 +18,8 @@
                 />
             </q-tabs>
             <menu-filter
-                v-show="showFilter"
                 :tags="tags"
-                :categories="categories"
+                :categories="allCategories"
             />
         </q-page-sticky>
 
@@ -38,11 +37,14 @@
                         {{ category.name }}
                     </q-item-label>
                     <menu-item
-                        v-for="item in category.items"
+                        v-for="item in filterItemsByTags(category)"
                         :item="item"
                         :restaurant="restaurant"
                         :key="item.id"
                     />
+                    <p v-if="filterItemsByTags(category).length === 0" class="text-center text-weight-light">
+                        No results found, try changing the filters.
+                    </p>
                 </div>
             </q-list>
         </div>
@@ -64,7 +66,6 @@ export default {
             filter: null,
             toggle: false,
             currentCategory: null,
-            showFilter: false,
         };
     },
     async created() {
@@ -95,12 +96,6 @@ export default {
             );
         },
         handleScroll() {
-            if (window.pageYOffset) {
-                this.showFilter = true;
-            } else {
-                this.showFilter = false;
-            }
-
             // Only changes when the current category is no longer in Viewport
             if (this.isInViewport(this.currentCategoryElement)) {
                 return;
@@ -125,18 +120,40 @@ export default {
                 },
             });
         },
+        filterItemsByTags(category) {
+            if (this.isFilteringTag === false) {
+                return category.items;
+            }
+
+            return category.items.filter(this.correspondsTagFilter);
+        },
+        correspondsTagFilter(item) {
+            if (this.isFilteringTag === false) {
+                return true;
+            }
+
+            for (let i = 0; i < item.tags.length; i++) {
+                if (this.filteredTags.includes(item.tags[i].id)) {
+                    return true;
+                }
+            }
+
+            return false;
+        },
     },
     computed: {
         ...mapState({
             featuredItems: state => state.menu.featuredItems,
             restaurant: state => state.menu.place,
-            categories: state => state.menu.categories,
+            allCategories: state => state.menu.categories,
+            filteredCategories: state => state.menu.filteredCategories,
+            filteredTags: state => state.menu.filteredTags,
         }),
         currentCategoryElement() {
             return document.getElementById(this.currentCategory);
         },
         tags() {
-            let tags = _.map(this.categories, category => {
+            let tags = _.map(this.allCategories, category => {
                 return _.map(category.items, item => {
                     return item.tags;
                 });
@@ -146,6 +163,18 @@ export default {
             tags = _.uniqBy(tags, 'id');
 
             return tags;
+        },
+        isFilteringTag() {
+            return this.filteredTags.length > 0;
+        },
+        categories() {
+            if (this.filteredCategories.length === 0) {
+                return this.allCategories;
+            }
+
+            return this.allCategories.filter(category => {
+                return this.filteredCategories.includes(category.id);
+            });
         },
     },
 };

@@ -1,4 +1,4 @@
-import {SET_MENU} from '../mutationTypes';
+import {FILTER_MENU, SET_MENU} from '../mutationTypes';
 
 export default {
     fetchMenu({commit}, restaurantId) {
@@ -16,6 +16,11 @@ export default {
             place: {},
             categories: [],
             featuredItems: [],
+            filteredCategories: [],
+            filteredTags: [],
         });
+    },
+    filterMenu({commit}, filters) {
+        commit(FILTER_MENU, filters);
     },
 };

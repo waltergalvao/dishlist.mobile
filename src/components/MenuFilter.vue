@@ -17,7 +17,7 @@
                         <q-checkbox
                             v-for="category in categories"
                             :key="category.id"
-                            v-model="filteredCategories"
+                            v-model="selectedCategories"
                             :val="category.id"
                             :label="category.name"
                             class="filter__checkbox"
@@ -31,7 +31,7 @@
                         <q-checkbox
                             v-for="tag in tags"
                             :key="tag.id"
-                            v-model="filteredTags"
+                            v-model="selectedTags"
                             :val="tag.id"
                             :label="tag.name"
                             class="filter__checkbox"
@@ -45,7 +45,9 @@
                     <q-btn flat round v-close-popup color="grey-7"
                         >Cancel</q-btn
                     >
-                    <q-btn flat color="primary" v-close-popup>Filter</q-btn>
+                    <q-btn flat color="primary" v-close-popup @click="filter"
+                        >Filter</q-btn
+                    >
                 </q-card-actions>
             </q-card>
         </q-dialog>
@@ -53,13 +55,15 @@
 </template>
 
 <script>
+import {mapActions, mapState} from 'vuex';
+
 export default {
     name: 'MenuFilter',
     data() {
         return {
             card: false,
-            filteredTags: [],
-            filteredCategories: [],
+            selectedTags: [],
+            selectedCategories: [],
         };
     },
     props: {
@@ -73,19 +77,25 @@ export default {
         },
     },
     created() {
-        document.addEventListener('scroll', this.handleScroll);
-    },
-    destroyed() {
-        document.removeEventListener('scroll', this.handleScroll);
+        this.selectedTags = this.filteredTags;
+        this.selectedCategories = this.filteredCategories;
     },
     methods: {
-        handleScroll() {
-            if (window.pageYOffset > 100) {
-                this.showFilter = true;
-            } else {
-                this.showFilter = false;
-            }
+        ...mapActions({
+            filterMenu: 'filterMenu',
+        }),
+        filter() {
+            this.filterMenu({
+                categories: this.selectedCategories,
+                tags: this.selectedTags,
+            });
         },
+    },
+    computed: {
+        ...mapState({
+            filteredCategories: state => state.menu.filteredCategories,
+            filteredTags: state => state.menu.filteredTags,
+        }),
     },
 };
 </script>
