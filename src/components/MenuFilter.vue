@@ -25,7 +25,7 @@
                     </div>
                 </q-card-section>
 
-                <q-card-section>
+                <q-card-section v-if="tags.length">
                     <div class="text-subtitle1">Traits</div>
                     <div class="filter__options">
                         <q-checkbox
