@@ -1,10 +1,10 @@
 {
   "name": "dishlist",
   "version": "0.0.1",
-  "description": "Live Menu for Restaurants",
+  "description": "WMDD 2019 Fall Term Capstone Project. Live menu for restaurants. Our slogan is: DishList, where your dishes come true",
   "productName": "DishList",
-  "cordovaId": "com.langara.livemenu",
-  "author": "Walter Galvão <walter.galvao@biper.com.br>",
+  "cordovaId": "ca.wmdd.dishlist",
+  "author": "Team4 => Eduardo Carmo, Heloysa Tancredo, Jyot Sarup, Marcos Cavalcanti, Tran Tung Duong, Walter Galvão, Zeinab Ahmadi",
   "private": true,
   "scripts": {
     "dev": "quasar dev",
