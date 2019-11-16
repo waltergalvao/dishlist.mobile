@@ -1,7 +1,7 @@
 <template>
     <q-page class="search-restaurant text-center">
         <div class=" search-restaurant__searchContainer">
-            <div class="search-restaurant__qr width85 ">
+            <div class="search-restaurant__qr width85" v-on:click="scanQRcode">
                 <img class="search-restaurant__qr_img" :src="scanQRImage" />
             </div>
 
@@ -69,24 +69,44 @@ export default {
             resetMenu: 'resetMenu',
         }),
         scanQRcode() {
+            // show loading gif while loading camera component
             this.$q.loading.show({
                 delay: 400,
             });
-
+            // user barcode scanner plugin
             cordova.plugins.barcodeScanner.scan(
                 result => {
+                    // hide loading gif
                     this.$q.loading.hide();
+                    // if read something and user didn't cancelled it..
                     if (result && result.cancelled !== 1 && result.text) {
+                        // reset menu properties
                         this.resetMenu();
+                        // redirect to restarant's menu
                         this.$router.push(
                             '/restaurant/' + result.text + '/menu',
                         );
                     }
                 },
                 error => {
+                    // hide loading gif
                     this.$q.loading.hide();
-                    this.$q.notify(error);
-                },
+
+                    // show error message
+                    let msg = new String(error);
+                    if (
+                        error.response &&
+                        error.response.data &&
+                        error.response.data.message
+                    ) {
+                        msg = error.response.data.message;
+                    }
+                    this.$q.notify({
+                        message: msg,
+                        icon: 'error',
+                        color: 'negative'
+                    });
+                }
             );
         },
     },
