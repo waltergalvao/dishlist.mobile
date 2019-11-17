@@ -13,7 +13,12 @@ vueAxios.interceptors.response.use(
     error => {
         // Always show message if there is any network error.
         // This error will occur when there is no response from the server
-        if (error && error.name && error.name === 'Error' && error.response === undefined){
+        if (
+            error &&
+            error.name &&
+            error.name === 'Error' &&
+            error.response === undefined
+        ) {
             // generate message from 'error'
             let msg = new String(error);
             // show error message to the user

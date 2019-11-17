@@ -1,5 +1,5 @@
 {
-  "name": "com.langara.livemenu",
+  "name": "ca.wmdd.dishlist",
   "displayName": "DishList",
   "version": "1.0.0",
   "description": "A sample Apache Cordova application that responds to the deviceready event.",

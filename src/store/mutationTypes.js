@@ -7,3 +7,4 @@ export const LOAD_REVIEWS = 'Review page has been loaded';
 export const CLEAR_REVIEWS = 'Reviews cleared';
 export const SET_NAVIGATION_DRAWER = 'The navigation drawer has been toggled';
 export const SET_AUTHENTICATED = 'User is authenticated';
+export const HIDE_SPLASH_SCREEN = 'The splash screen is hide';

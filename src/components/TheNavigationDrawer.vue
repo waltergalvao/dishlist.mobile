@@ -13,7 +13,9 @@
                 <q-avatar>
                     <img src="~assets/avatar.png" class="drawer__avatar" />
                 </q-avatar>
-                <div class="text-weight-bold drawer__name">{{ auth.username }}</div>
+                <div class="text-weight-bold drawer__name">
+                    {{ auth.username }}
+                </div>
                 <div>{{ auth.email }}</div>
             </div>
             <!-- Otherwise, show a welcome message -->
@@ -155,7 +157,7 @@ export default {
         ...mapState({
             isOpen: state => state.ui.drawer.isOpen,
             auth: state => state.login.auth,
-            isAuthenticated: state => state.login.auth.isAuthenticated()
+            isAuthenticated: state => state.login.auth.isAuthenticated(),
         }),
     },
 };
