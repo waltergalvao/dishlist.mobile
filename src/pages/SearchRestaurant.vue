@@ -1,20 +1,22 @@
 <template>
     <q-page>
-        <div>
+        <div class="search-container">
             <q-img
                 class="flip-vertical responsive "
                 :src="screenTopBackground"
             ></q-img>
-        </div>
-        <div class="q-pa-sm q-mt-sm searchBox">
             <q-input
+                clearable
                 outlined
+                debounce="500"
+                class="search-container-restaurant"
+                type="text"
+                bg-color="white"
                 ref="restaurantNameInput"
                 v-model="restaurantName"
-                label="Restaurant Name.."
-                type="text"
-                clearable
-                @keyup="searchRestaurant()"
+                label="Search for a restaurant"
+                :disable="searchInputIsDisabled"
+                @input="searchRestaurant()"
             >
                 <template v-slot:append>
                     <q-icon name="search" color="red" />
@@ -45,8 +47,12 @@ export default {
     components: {RestaurantDetails},
     data() {
         return {
+            // Restaurant name to search
             restaurantName: '',
+            // Location of top background
             screenTopBackground: 'statics/home-screen-bottom.png',
+            // Controls if the input component will be disabled or not
+            searchInputIsDisabled: false,
         };
     },
     mounted() {
@@ -58,7 +64,33 @@ export default {
             resetMenu: 'resetMenu',
         }),
         async searchRestaurant() {
-            await this.fetchRestaurant(this.restaurantName);
+            try {
+                // Search for the restaurant. If it returns something, vue store will be updated.
+                if (this.restaurantName) {
+                    await this.fetchRestaurant(this.restaurantName);
+                }
+            } catch (error) {
+                if (!(error.response && error.response.status === 404)) {
+                    // tell the user to wait a little bit until next try
+                    this.$q.notify({
+                        message: 'Wait a little bit to try again',
+                        icon: 'warning',
+                        timeout: 1500,
+                    });
+                    // disable input for a while...
+                    this.searchInputIsDisabled = true;
+                    // get a reference to this component to use inside setTimeout
+                    let thisComponent = this;
+                    // remove focus from the input box
+                    this.$refs.restaurantNameInput.blur();
+                    // set timeout to restore input box
+                    setTimeout(() => {
+                        thisComponent.searchInputIsDisabled = false;
+                        // clear the content
+                        this.restaurantName = '';
+                    }, 2500);
+                }
+            }
         },
     },
     computed: {
@@ -70,16 +102,15 @@ export default {
 </script>
 
 <style lang="scss">
-.searchBox {
-    position: absolute;
-    top: 1rem;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 2;
-    width: 80%;
-}
-
-.q-field__inner.relative-position.col.self-stretch.column.justify-center {
-    background-color: white !important;
+// set the height of the container with an image and an input box
+.search-container {
+    height: 150px;
+    // move input box close to the top
+    &-restaurant {
+        position: relative;
+        width: 80%;
+        margin: 0 auto;
+        top: -95px;
+    }
 }
 </style>

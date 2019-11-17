@@ -8,8 +8,8 @@ export default {
                 commit(SET_RESTAURANT, response.data);
             })
             .catch(err => {
-                console.log(err);
                 commit(SET_RESTAURANT, []);
+                throw err;
             });
     },
 };
