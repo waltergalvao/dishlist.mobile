@@ -20,13 +20,12 @@
                     </div>
                 </div>
 
-                <q-item-label caption class="item__description"
-                    >
-                    <dot :line="2" :msg="item.short_description"></dot>
+                <q-item-label caption class="item__description">
+                    <dot class="item__dot" :line="2" :msg="item.short_description"></dot>
                 </q-item-label>
 
                 <q-item-section class="block item__tags">
-                    <rating>{{ item.rating }}</rating>
+                    <rating class="reset-left">{{ item.rating }}</rating>
                     <group-dish>2</group-dish>
                     <dish-tags :tags="item.tags" />
                 </q-item-section>
@@ -64,6 +63,10 @@ export default {
     width: 96px;
     height: 96px;
     border-radius: 4px;
+}
+
+.item__dot {
+    margin: 5px 0 0 0;
 }
 
 .q-item {

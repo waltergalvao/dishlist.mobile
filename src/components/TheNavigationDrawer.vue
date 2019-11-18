@@ -108,7 +108,7 @@
 </template>
 
 <script>
-import {mapActions, mapState} from 'vuex';
+    import {mapActions, mapGetters, mapState} from 'vuex';
 
 export default {
     name: 'TheNavigationDrawer',
@@ -154,10 +154,12 @@ export default {
         },
     },
     computed: {
+        ...mapGetters({
+            isAuthenticated: 'isUserLoggedIn',
+        }),
         ...mapState({
             isOpen: state => state.ui.drawer.isOpen,
-            auth: state => state.login.auth,
-            isAuthenticated: state => state.login.auth.isAuthenticated(),
+            auth: state => state.login,
         }),
     },
 };

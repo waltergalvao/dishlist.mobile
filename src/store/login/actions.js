@@ -1,5 +1,4 @@
-import {SET_AUTHENTICATED, SET_NAVIGATION_DRAWER} from '../mutationTypes';
-import Auth from './Auth';
+import {LOGIN, LOGOUT, SET_NAVIGATION_DRAWER} from '../mutationTypes';
 
 // get the Authentication URL from dotenv file
 let authURL = process.env.VUE_APP_AUTH_URL;
@@ -16,7 +15,8 @@ export default {
         return this._vm.$axios.post(`${authURL}/login`, user).then(response => {
             if (response.data) {
                 // store user into vuex store
-                commit(SET_AUTHENTICATED, response.data);
+                console.log(response.data);
+                commit(LOGIN, response.data);
             }
         });
     },
@@ -26,7 +26,7 @@ export default {
             .then(response => {
                 if (response.data) {
                     // Set an object with null fields
-                    commit(SET_AUTHENTICATED, new Auth());
+                    commit(LOGOUT);
                     // since logout is called from the drawer, close it after logging out
                     commit(SET_NAVIGATION_DRAWER, false);
                 }
@@ -38,7 +38,7 @@ export default {
             .then(response => {
                 if (response.data) {
                     // store user into the vuex store
-                    commit(SET_AUTHENTICATED, response.data);
+                    commit(LOGIN, response.data);
                 }
             });
     },

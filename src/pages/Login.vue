@@ -91,25 +91,29 @@ export default {
                 })
                 .catch(error => {
                     // show error message
-                    let msg = new String(error);
                     if (
                         error.response &&
                         error.response.data &&
                         error.response.data.message
                     ) {
-                        msg = error.response.data.message;
+                        this.$q.notify({
+                            message: error.response.data.message,
+                            icon: 'error',
+                            color: 'negative',
+                        });
+                    } else {
+                        this.$q.notify({
+                            message: 'Error found. Please try again!',
+                            icon: 'error',
+                            color: 'negative',
+                        });
                     }
-                    this.$q.notify({
-                        message: msg,
-                        icon: 'error',
-                        color: 'negative',
-                    });
                 });
         },
     },
     computed: {
         ...mapState({
-            auth: state => state.login.auth,
+            auth: state => state.login,
         }),
     },
 };
