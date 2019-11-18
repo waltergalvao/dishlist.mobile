@@ -5,12 +5,11 @@
         <div class="q-pa-xs fixed-center">
             <!-- Application Logo -->
             <div class="app-logo-container">
-                 <img src="~assets/app-logo.png" />
+                <img src="~assets/app-logo.png" />
             </div>
 
             <!-- Register Form -->
             <q-form @submit.prevent="onSubmit" class="q-gutter-xs">
-
                 <!-- Name Input -->
                 <q-input
                     filled
@@ -21,7 +20,8 @@
                     :rules="[
                         val =>
                             (val !== null && val !== '') ||
-                            'Please type your name']"
+                            'Please type your name',
+                    ]"
                 />
 
                 <!--
@@ -40,13 +40,13 @@
                         val =>
                             (val !== null && val !== '' && val.length > 5) ||
                             'Type your password (at least 6 characters)',
-                    ]"/>
+                    ]"
+                />
 
                 <!-- Submit button -->
                 <q-btn-group spread>
                     <q-btn label="Register" type="submit" color="primary" />
                 </q-btn-group>
-
             </q-form>
         </div>
     </q-page>
@@ -73,7 +73,8 @@ export default {
     },
     methods: {
         ...mapActions({}),
-        onSubmit() { // Form submission
+        onSubmit() {
+            // Form submission
             this.$store
                 .dispatch('doRegister', {
                     username: this.username,
@@ -90,7 +91,7 @@ export default {
                     this.$q.notify({
                         message: `Hello ${this.username}. Welcome to DishList!`,
                         icon: 'tag_faces',
-                        timeout: 1000
+                        timeout: 1000,
                     });
                 })
                 .catch(error => {
@@ -106,7 +107,7 @@ export default {
                     this.$q.notify({
                         message: msg,
                         icon: 'error',
-                        color: 'negative'
+                        color: 'negative',
                     });
                 });
         },

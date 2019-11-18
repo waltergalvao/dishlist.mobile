@@ -4,19 +4,16 @@
     <q-page>
         <div class="q-pa-xs fixed-center">
             <div class="app-logo-container">
-                 <img src="~assets/app-logo.png"  />
+                <img src="~assets/app-logo.png" />
             </div>
 
             <!--  Login Form -->
             <q-form @submit.prevent="onSubmit" class="q-gutter-xs">
-
                 <!--
                     Email component
                     This component will validate if the email string is valid.
                  -->
-                <dish-email-input
-                    v-model="email">
-                 </dish-email-input>
+                <dish-email-input v-model="email"> </dish-email-input>
 
                 <!-- Password field with validation -->
                 <q-input
@@ -29,7 +26,8 @@
                         val =>
                             (val !== null && val !== '' && val.length > 5) ||
                             'Type your password (at least 6 characters)',
-                    ]"/>
+                    ]"
+                />
 
                 <q-btn-group spread>
                     <q-btn label="Log In" type="submit" color="primary" />
@@ -59,7 +57,8 @@ export default {
     },
     methods: {
         ...mapActions({}),
-        onSubmit() { // Submit function
+        onSubmit() {
+            // Submit function
             this.$store
                 .dispatch('doLogin', {
                     email: this.email,
@@ -73,7 +72,7 @@ export default {
                         this.$q.notify({
                             message: `Welcome ${this.auth.username}! You may now create your review.`,
                             icon: 'thumb_up',
-                            timeout: 1000
+                            timeout: 1000,
                         });
                         return;
                     }
@@ -87,7 +86,7 @@ export default {
                     this.$q.notify({
                         message: `Hello ${this.auth.username}. Welcome back!`,
                         icon: 'tag_faces',
-                        timeout: 1000
+                        timeout: 1000,
                     });
                 })
                 .catch(error => {
@@ -103,7 +102,7 @@ export default {
                     this.$q.notify({
                         message: msg,
                         icon: 'error',
-                        color: 'negative'
+                        color: 'negative',
                     });
                 });
         },

@@ -6,7 +6,6 @@
         label="Your e-mail *"
         lazy-rules
         :rules="[val => emailValidation(val) || 'Please enter a valid e-mail']"
-
     />
 </template>
 
