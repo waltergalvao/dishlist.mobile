@@ -24,7 +24,10 @@ You need Docker to run this application.
 
 #### Building Android App
 
-1: Inside the container, enter `src-cordova` directory and run `cordova build android`
+1: Inside the container, run `quasar build -m cordova -T android`  
+2: Go to the generated .apk folder and run `jarsigner -verbose -siga
+lg SHA1withRSA -digestalg SHA1 -keystore ~/.android/debug.keystore app-release-unsigned.apk androiddebugkey -storepass android
+` - this is for Ubuntu, may not work for other platforms. Google how to self-sign android apk.
 
 #### Testing Cordova on Browser
 
