@@ -21,7 +21,8 @@
                 </div>
 
                 <q-item-label caption class="item__description"
-                    >{{ item.short_description }}
+                    >
+                    <dot :line="2" :msg="item.short_description"></dot>
                 </q-item-label>
 
                 <q-item-section class="block item__tags">
@@ -40,10 +41,11 @@
 import Rating from './_dumb/VRating';
 import GroupDish from './_dumb/VGroupDish';
 import DishTags from './DishTags';
+import Dot from 'vue-text-dot';
 
 export default {
     name: 'DishItem',
-    components: {DishTags, GroupDish, Rating},
+    components: {DishTags, GroupDish, Rating, Dot},
     props: {
         item: {
             type: Object,

@@ -23,6 +23,7 @@
     "vue-axios": "^2.1.4",
     "vue-gallery": "^2.0.1",
     "vue-scrollto": "^2.17.1",
+    "vue-text-dot": "^1.0.0",
     "vuex": "^3.1.1"
   },
   "devDependencies": {
