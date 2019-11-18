@@ -11,6 +11,13 @@
 
         <q-dialog v-model="card">
             <q-card>
+
+                <q-card-section class="row items-center">
+                    <div class="text-h6">Filters</div>
+                    <q-space />
+                    <q-btn icon="close" flat round dense v-close-popup />
+                </q-card-section>
+
                 <q-card-section>
                     <div class="text-subtitle1">Categories</div>
                     <div class="filter__options">
@@ -26,7 +33,7 @@
                 </q-card-section>
 
                 <q-card-section v-if="tags.length">
-                    <div class="text-subtitle1">Traits</div>
+                    <div class="text-subtitle1">Characteristics</div>
                     <div class="filter__options">
                         <q-checkbox
                             v-for="tag in tags"
@@ -42,8 +49,8 @@
                 <q-separator />
 
                 <q-card-actions align="around">
-                    <q-btn flat round v-close-popup color="grey-7"
-                        >Cancel</q-btn
+                    <q-btn flat round @click="reset" color="grey-7"
+                        >Reset</q-btn
                     >
                     <q-btn flat color="primary" v-close-popup @click="filter"
                         >Filter</q-btn
@@ -89,6 +96,10 @@ export default {
                 categories: this.selectedCategories,
                 tags: this.selectedTags,
             });
+        },
+        reset() {
+            this.selectedTags = [];
+            this.selectedCategories = [];
         },
     },
     computed: {
