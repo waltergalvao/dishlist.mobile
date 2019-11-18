@@ -1,5 +1,5 @@
 <template>
-    <q-page class="q-pa-md text-center">
+    <q-page class="q-pa-md text-center full-height">
         <q-form @submit="onSubmit">
             <div class="text-center full-width" v-if="dish">
                 <q-item-section thumbnail class="items-center">
@@ -105,10 +105,17 @@ export default {
     },
     async created() {
         if (this.isUserLoggedIn === false) {
+            this.$q.notify({
+                message: `Please login before creating your review.`,
+                icon: 'warning',
+                timeout: 1000,
+            });
+
             this.$router.push({
-                name: 'login',
+                name: 'review.login',
                 query: {
                     redirectTo: this.$route.path,
+                    backTo: this.$router.resolve(this.backRoute).resolved.path,
                 },
             });
         }

@@ -51,6 +51,10 @@ export default {
     },
     created() {
         this.$emit('updateTitle', 'Login');
+
+        if (this.$route.query.backTo) {
+            this.$emit('updateBackRoute', this.$route.query.backTo);
+        }
     },
     components: {
         DishEmailInput,
