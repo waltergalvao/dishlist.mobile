@@ -67,7 +67,6 @@ export default {
                 .then(() => {
                     // If login is ok, check if this page was called from review. If true, redirect to that page, if not, go to home
                     if (this.$route.query.redirectTo) {
-                        this.$router.push(this.$route.query.redirectTo);
                         // Greetings
                         this.$q.notify({
                             message: `Welcome ${
@@ -76,6 +75,8 @@ export default {
                             icon: 'thumb_up',
                             timeout: 1000,
                         });
+
+                        this.$router.push(this.$route.query.redirectTo);
                         return;
                     }
 
