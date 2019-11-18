@@ -34,7 +34,7 @@
                     />
                 </div>
                 <div v-else-if="restaurantName.length" class="text-center">
-                    No results found
+                    No restaurants found
                 </div>
             </q-list>
         </div>
@@ -58,14 +58,19 @@ export default {
             searchInputIsDisabled: false,
         };
     },
+    async created() {
+        this.resetRestaurantList();
+        this.$emit('updateTitle', 'Search By Name');
+    },
     mounted() {
-        this.$emit('updateTitle', 'DishList');
         this.$refs.restaurantNameInput.focus();
+        
     },
     methods: {
         ...mapActions({
             fetchRestaurant: 'fetchRestaurant',
             resetMenu: 'resetMenu',
+            resetRestaurantList: 'resetRestaurantList',
         }),
         async searchRestaurant() {
             try {
