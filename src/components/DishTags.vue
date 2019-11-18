@@ -1,6 +1,11 @@
 <template>
     <div>
-        <tag v-for="tag in tags" class="reset-left" :key="tag.id" :color="'#' + tag.color">
+        <tag
+            v-for="tag in tags"
+            class="reset-left"
+            :key="tag.id"
+            :color="'#' + tag.color"
+        >
             {{ tag.name }}
         </tag>
     </div>

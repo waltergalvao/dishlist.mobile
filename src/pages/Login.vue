@@ -70,7 +70,9 @@ export default {
                         this.$router.push(this.$route.query.redirectTo);
                         // Greetings
                         this.$q.notify({
-                            message: `Welcome ${this.auth.username}! You may now create your review.`,
+                            message: `Welcome ${
+                                this.auth.username
+                            }! You may now create your review.`,
                             icon: 'thumb_up',
                             timeout: 1000,
                         });

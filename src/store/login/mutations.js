@@ -7,7 +7,7 @@ export default {
         state.token = auth.token;
         return state;
     },
-    [LOGOUT]: (state) => {
+    [LOGOUT]: state => {
         state.username = null;
         state.email = null;
         state.token = null;

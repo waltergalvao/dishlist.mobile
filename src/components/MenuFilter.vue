@@ -11,7 +11,6 @@
 
         <q-dialog v-model="card">
             <q-card>
-
                 <q-card-section class="row items-center">
                     <div class="text-h6">Filters</div>
                     <q-space />

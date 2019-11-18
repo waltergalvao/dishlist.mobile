@@ -21,7 +21,11 @@
                 </div>
 
                 <q-item-label caption class="item__description">
-                    <dot class="item__dot" :line="2" :msg="item.short_description"></dot>
+                    <dot
+                        class="item__dot"
+                        :line="2"
+                        :msg="item.short_description"
+                    ></dot>
                 </q-item-label>
 
                 <q-item-section class="block item__tags">
