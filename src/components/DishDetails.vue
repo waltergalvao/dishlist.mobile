@@ -1,20 +1,19 @@
 <template>
     <div class="details">
-        <div class="row details__main">
+        <div class="row details__main items-center">
             <div class="col details__price">
                 $23.50
             </div>
-            <div class="col">
-                <average-time class="details__average-time"
+            <div class="col text-center">
+                <average-time class="details__average-time no-margin"
                     >5 mins</average-time
                 >
             </div>
-            <div class="col">
+            <div class="col text-right">
                 <q-chip
                     dense
                     icon="users"
-                    class="details__serve"
-                    style="margin-left: 0;"
+                    class="details__serve no-margin"
                     color="white"
                 >
                     2 persons
