@@ -26,12 +26,15 @@
 
         <div class="q-pa-sm" v-if="restaurantList">
             <q-list>
-                <div>
+                <div v-if="restaurantList.length">
                     <restaurant-details
                         v-for="(restaurant, key) in restaurantList"
                         :restaurant="restaurant"
                         :key="key"
                     />
+                </div>
+                <div v-else-if="restaurantName.length" class="text-center">
+                    No results found
                 </div>
             </q-list>
         </div>
@@ -56,6 +59,7 @@ export default {
         };
     },
     mounted() {
+        this.$emit('updateTitle', 'DishList');
         this.$refs.restaurantNameInput.focus();
     },
     methods: {
