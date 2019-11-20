@@ -5,7 +5,7 @@
                 class=" shadow-5 bg-white"
                 v-model="currentCategory"
                 indicator-color="primary"
-                active-color="red"
+                active-color="primary"
                 stretch
                 :value="null"
                 style="width: 100vw;"

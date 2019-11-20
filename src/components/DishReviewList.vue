@@ -1,7 +1,7 @@
 <template>
     <div class="reviews">
         <div
-            class="text-orange no-margin text-h3 text-center flex justify-center "
+            class="text-orange-4 no-margin text-h3 text-center flex justify-center "
         >
             <q-icon name="star" /> {{ dish.rating }}
         </div>
@@ -20,7 +20,7 @@
                     </q-item-section>
 
                     <q-item-section side top>
-                        <div class="text-orange">
+                        <div class="text-orange-4">
                             <q-icon name="star" />
                             {{ review.rating }}
                         </div>

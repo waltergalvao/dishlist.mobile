@@ -7,7 +7,14 @@
             v-if="dish"
         />
 
-        <q-tabs v-model="tab" class="" align="justify" narrow-indicator>
+        <q-tabs
+            v-model="tab"
+            class=""
+            align="justify"
+            narrow-indicator
+            indicator-color="primary"
+            active-color="primary"
+        >
             <q-tab name="details" label="Details" />
             <q-tab name="reviews" label="Reviews" />
             <q-tab name="photos" label="Photos" />
@@ -16,7 +23,7 @@
         <q-separator />
 
         <q-tab-panels v-model="tab" animated>
-            <q-tab-panel name="details">
+            <q-tab-panel name="details" class="no-padding">
                 <dish-details />
             </q-tab-panel>
 
