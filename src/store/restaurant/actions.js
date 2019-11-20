@@ -12,4 +12,11 @@ export default {
                 throw err;
             });
     },
+    resetRestaurantList({commit}) {
+        
+        commit(SET_RESTAURANT, []);
+                
+    },
+
+    
 };
