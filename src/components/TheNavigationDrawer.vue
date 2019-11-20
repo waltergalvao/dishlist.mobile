@@ -16,6 +16,7 @@
                 <div class="text-weight-bold drawer__name">
                     {{ auth.username }}
                 </div>
+                <div>{{ auth.email }}</div>
             </div>
             <!-- Otherwise, show a welcome message -->
             <div class="text-white q-pa-md" v-else>
@@ -175,19 +176,6 @@ export default {
 
     &__name {
         padding-top: 10px;
-        font-size: 1rem;
-        letter-spacing: .4px;
     }
 }
-
-.q-item {
-    padding: 0 2.5rem;
-}
-
-.q-item__label--header {
-    color: $primary;
-    padding: 1rem 1.5rem 0 1.5rem;
-
-}
-
 </style>
