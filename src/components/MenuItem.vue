@@ -35,8 +35,6 @@
                 </q-item-section>
             </q-item-section>
         </q-item>
-
-        <q-separator />
     </router-link>
 </template>
 

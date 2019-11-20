@@ -2,8 +2,10 @@
     <q-page class="menu">
         <q-page-sticky position="top" v-if="categories">
             <q-tabs
-                class="text-accent shadow-5 bg-white"
+                class=" shadow-5 bg-white"
                 v-model="currentCategory"
+                indicator-color="primary"
+                active-color="red"
                 stretch
                 :value="null"
                 style="width: 100vw;"
@@ -22,7 +24,7 @@
 
         <menu-featured v-if="featuredItems.length && restaurant" />
 
-        <div class="q-pa-sm" v-if="categories">
+        <div v-if="categories">
             <q-list>
                 <div
                     v-for="(category, key) in categories"
@@ -30,15 +32,32 @@
                     :key="category.id"
                     :id="'category-' + category.id"
                 >
-                    <q-item-label header :key="'label' + key">
+                    <div :key="'label' + key" class="menu__category">
                         {{ category.name }}
-                    </q-item-label>
-                    <menu-item
-                        v-for="item in filterItemsByTags(category)"
-                        :item="item"
-                        :restaurant="restaurant"
-                        :key="item.id"
-                    />
+                        <q-img
+                            src="statics/category-separator.svg"
+                            class="menu__category-separator"
+                        ></q-img>
+                    </div>
+
+                    <template
+                        v-for="(item, index) in filterItemsByTags(category)"
+                    >
+                        <menu-item
+                            :item="item"
+                            :class="['q-pa-sm', {'first-item': index === 0}]"
+                            :restaurant="restaurant"
+                            :key="item.id"
+                        />
+
+                        <q-separator
+                            v-if="
+                                index + 1 < filterItemsByTags(category).length
+                            "
+                            :key="index"
+                        />
+                    </template>
+
                     <p
                         v-if="filterItemsByTags(category).length === 0"
                         class="text-center text-weight-light"
@@ -188,6 +207,21 @@ export default {
 }
 
 .menu {
-    padding: 45px 0 40px 0;
+    padding: 45px 0 0 0;
+
+    &__category {
+        padding: 20px 10px 0 10px;
+        color: $primary;
+        text-align: center;
+        font-size: 1.7em;
+
+        &-separator {
+            position: relative;
+            margin-top: -30px;
+        }
+    }
 }
+    .first-item {
+        padding-top: 0 !important;
+    }
 </style>
