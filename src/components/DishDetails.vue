@@ -26,7 +26,9 @@
         </div>
 
         <div class="details__ingredients-card">
-            <h6 class="details__ingredients-title text-subtitle2 q-my-sm">Ingredients</h6>
+            <h6 class="details__ingredients-title text-subtitle2 q-my-sm">
+                Ingredients
+            </h6>
             <q-card>
                 <q-list
                     bordered

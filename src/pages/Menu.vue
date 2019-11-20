@@ -221,7 +221,7 @@ export default {
         }
     }
 }
-    .first-item {
-        padding-top: 0 !important;
-    }
+.first-item {
+    padding-top: 0 !important;
+}
 </style>
