@@ -10,9 +10,6 @@
         <div class="drawer__header">
             <!-- Show username and avatar if user is logged -->
             <div class="text-white q-pa-md" v-if="isAuthenticated">
-                <q-avatar>
-                    <img src="~assets/avatar.png" class="drawer__avatar" />
-                </q-avatar>
                 <div class="text-weight-bold drawer__name">
                     {{ auth.username }}
                 </div>
@@ -171,7 +168,7 @@ export default {
         background: url('~assets/drawer-bg.png');
         background-size: cover;
         background-position-y: bottom;
-        padding: 40px 0 5px 0;
+        padding: 80px 0 5px 0;
     }
 
     &__name {
