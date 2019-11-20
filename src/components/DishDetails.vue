@@ -7,7 +7,7 @@
                 </div>
                 <div class="col text-center">
                     <average-time class="details__average-time no-margin"
-                    >5 mins</average-time
+                        >5 mins</average-time
                     >
                 </div>
                 <div class="col text-right">
@@ -25,7 +25,8 @@
             <dish-tags :tags="dish.tags" />
         </div>
 
-        <div class="details__ingredients-card shadow-2">
+        <div class="details__ingredients-card">
+            <h6 class="details__ingredients-title text-subtitle2 q-my-sm">Ingredients</h6>
             <q-card>
                 <q-list
                     bordered
@@ -35,6 +36,7 @@
                 >
                     <q-item
                         v-for="(ingredient, index) in dish.ingredients"
+                        class="details__ingredient-row"
                         :key="index"
                     >
                         <q-item-section>{{ ingredient.name }}</q-item-section>
@@ -61,41 +63,46 @@ export default {
 };
 </script>
 
-
-
-
-
-
 <style scoped lang="scss">
-    .details {
-        &__main {
-            padding: 0 0 10px 0;
-        }
-
-        &__price {
-            font-size: 2em;
-            color: green;
-        }
-
-        &__average-time {
-            font-size: 1.3em;
-        }
-
-        &__serve {
-            font-size: 1.3em;
-        }
-
-        &__ingredients-card {
-            background: url("https://previews.123rf.com/images/rosadu/rosadu1801/rosadu180100004/92843856-pizza-ingredients-seamless-pattern-in-black-and-white.jpg");
-            padding: 20px 50px;
-        }
-
-        &__ingredients {
-            margin-top: 10px;
-        }
-
-        &__item {
-            padding: 12px 0;
-        }
+.details {
+    &__main {
+        padding: 0 0 10px 0;
     }
+
+    &__price {
+        font-size: 2em;
+        color: green;
+    }
+
+    &__average-time {
+        font-size: 1.3em;
+    }
+
+    &__serve {
+        font-size: 1.3em;
+    }
+
+    &__ingredients-card {
+        padding: 20px 50px;
+        text-align: center;
+    }
+
+    &__ingredients-title {
+    }
+
+    &__ingredients {
+        width: 50%;
+        margin: 0 auto;
+        padding: 10px 0;
+        margin-top: 10px;
+    }
+
+    &__ingredient-row {
+        padding: 10px 15px;
+    }
+
+    &__item {
+        padding: 12px 0;
+    }
+}
 </style>

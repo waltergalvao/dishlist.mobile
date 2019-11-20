@@ -9,7 +9,6 @@
 
         <q-tabs
             v-model="tab"
-            class=""
             align="justify"
             narrow-indicator
             indicator-color="primary"
