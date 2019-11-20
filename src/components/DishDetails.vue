@@ -27,7 +27,7 @@
 
         <div
             class="details__ingredients-card"
-            v-if="dish.ingredients.length > 0"
+            v-if="dish.ingredients.length"
         >
             <h6 class="details__ingredients-title text-subtitle2 q-my-sm">
                 Ingredients
@@ -37,7 +37,6 @@
                     bordered
                     separator
                     class="details__ingredients"
-                    v-if="dish.ingredients.length"
                 >
                     <q-item
                         v-for="(ingredient, index) in dish.ingredients"
