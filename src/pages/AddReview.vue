@@ -38,6 +38,8 @@
                 v-model="formData.description"
                 filled
                 type="textarea"
+                @focusin="showSubmit = false"
+                @focusout="showSubmit = true"
                 class="q-mt-md user"
                 label="Share details of your experience"
                 lazy-rules
@@ -58,6 +60,7 @@
 
             <q-page-sticky position="bottom" expand :offset="[18, 18]">
                 <q-btn
+                    v-show="showSubmit"
                     color="primary"
                     label="Send"
                     class="full-width q-ma-md"
@@ -100,6 +103,7 @@ export default {
                     id: 1,
                 },
             },
+            showSubmit: true,
             addPhotoDialog: false,
         };
     },
