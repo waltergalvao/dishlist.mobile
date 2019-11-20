@@ -25,7 +25,10 @@
             <dish-tags :tags="dish.tags" />
         </div>
 
-        <div class="details__ingredients-card">
+        <div
+            class="details__ingredients-card"
+            v-if="dish.ingredients.length > 0"
+        >
             <h6 class="details__ingredients-title text-subtitle2 q-my-sm">
                 Ingredients
             </h6>
