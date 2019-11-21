@@ -27,7 +27,7 @@
 }
 
 .q-rating__icon--active {
-    color: $orange !important;
+    color: $orange-4 !important;
 }
 
 .width85 {
@@ -46,4 +46,23 @@
 
 a.websiteLink {
     text-decoration: none;
+}
+
+.app-logo-container {
+    margin-bottom: 65px;
+    text-align: center;
+
+    img {
+        width: 116px;
+    }
+}
+
+.reset-left {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+}
+
+
+.item__dot p {
+    margin-bottom: 0 !important;
 }

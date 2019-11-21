@@ -1,5 +1,5 @@
 export default {
     isUserLoggedIn(state) {
-        return state.auth.isAuthenticated();
+        return state.username !== null;
     },
 };

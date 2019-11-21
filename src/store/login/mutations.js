@@ -1,9 +1,15 @@
-import {SET_AUTHENTICATED} from '../mutationTypes';
+import {LOGIN, LOGOUT} from '../mutationTypes';
 
 export default {
-    [SET_AUTHENTICATED]: (state, auth) => {
-        let newAuth = Object.assign({}, state.auth, auth);
-        state.auth = newAuth;
+    [LOGIN]: (state, auth) => {
+        state.username = auth.username;
+        state.email = auth.email;
+        state.token = auth.token;
         return state;
+    },
+    [LOGOUT]: state => {
+        state.username = null;
+        state.email = null;
+        state.token = null;
     },
 };

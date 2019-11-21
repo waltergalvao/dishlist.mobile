@@ -25,6 +25,7 @@
             <router-view
                 @updateTitle="updateTitle"
                 @updateBackRoute="updateBackRoute"
+                @toggleNavigation="toggleNavigation"
             />
         </q-page-container>
     </q-layout>
@@ -58,6 +59,9 @@ export default {
         },
         goBack() {
             this.$router.push(this.backRoute);
+        },
+        toggleNavigation() {
+            this.$route.meta.showNavigation = !this.$route.meta.showNavigation;
         },
     },
     computed: {

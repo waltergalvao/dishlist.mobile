@@ -2,7 +2,7 @@
     <q-chip
         outline
         class="no-border"
-        color="orange"
+        color="orange-4"
         text-color="white"
         dense
         icon="star"

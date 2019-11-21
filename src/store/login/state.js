@@ -1,6 +1,5 @@
-import Auth from './Auth';
-
-let auth = new Auth();
 export default {
-    auth: auth,
+    username: null,
+    email: null,
+    token: null,
 };

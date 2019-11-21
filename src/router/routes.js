@@ -42,6 +42,15 @@ const routes = [
                 component: () => import('pages/Login.vue'),
             },
             {
+                name: 'review.login',
+                path: '/review/login',
+                component: () => import('pages/Login.vue'),
+                meta: {
+                    showBackButton: true,
+                    showNavigation: false,
+                },
+            },
+            {
                 name: 'register',
                 path: '/register',
                 component: () => import('pages/Register.vue'),

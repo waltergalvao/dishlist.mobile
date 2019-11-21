@@ -1,9 +1,21 @@
+// This Component is responsible for the Login process
+
 <template>
     <q-page>
-        <div class="q-pa-md fixed-center" style="max-width: 400px">
-            <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
-                <dish-email-input v-model="email"></dish-email-input>
+        <div class="q-pa-xs fixed-center">
+            <div class="app-logo-container">
+                <img src="~assets/app-logo.png" />
+            </div>
 
+            <!--  Login Form -->
+            <q-form @submit.prevent="onSubmit" class="q-gutter-xs">
+                <!--
+                    Email component
+                    This component will validate if the email string is valid.
+                 -->
+                <dish-email-input v-model="email"> </dish-email-input>
+
+                <!-- Password field with validation -->
                 <q-input
                     filled
                     type="password"
@@ -12,21 +24,14 @@
                     lazy-rules
                     :rules="[
                         val =>
-                            (val !== null && val !== '') ||
-                            'Please type your password',
+                            (val !== null && val !== '' && val.length > 5) ||
+                            'Type your password (at least 6 characters)',
                     ]"
                 />
 
-                <div>
+                <q-btn-group spread>
                     <q-btn label="Log In" type="submit" color="primary" />
-                    <q-btn
-                        label="Reset"
-                        type="reset"
-                        color="primary"
-                        flat
-                        class="q-ml-sm"
-                    />
-                </div>
+                </q-btn-group>
             </q-form>
         </div>
     </q-page>
@@ -46,55 +51,76 @@ export default {
     },
     created() {
         this.$emit('updateTitle', 'Login');
+
+        if (this.$route.query.backTo) {
+            this.$emit('updateBackRoute', this.$route.query.backTo);
+        }
     },
     components: {
         DishEmailInput,
     },
     methods: {
         ...mapActions({}),
-        onReset() {
-            this.email = null;
-            this.password = null;
-        },
         onSubmit() {
+            // Submit function
             this.$store
                 .dispatch('doLogin', {
                     email: this.email,
                     password: this.password,
                 })
                 .then(() => {
+                    // If login is ok, check if this page was called from review. If true, redirect to that page, if not, go to home
                     if (this.$route.query.redirectTo) {
+                        // Greetings
+                        this.$q.notify({
+                            message: `Welcome ${
+                                this.auth.username
+                            }! You may now create your review.`,
+                            icon: 'thumb_up',
+                            timeout: 1000,
+                        });
+
                         this.$router.push(this.$route.query.redirectTo);
-                        this.$q.notify(
-                            'Welcome ' +
-                                this.auth.username +
-                                '! You may now create your review.',
-                        );
                         return;
                     }
 
+                    // redirect to home
                     this.$router.push({
                         name: 'home',
                     });
 
-                    this.$q.notify('Hello ' + this.auth.username + ' :)');
+                    // Greeting the user
+                    this.$q.notify({
+                        message: `Hello ${this.auth.username}. Welcome back!`,
+                        icon: 'tag_faces',
+                        timeout: 1000,
+                    });
                 })
                 .catch(error => {
-                    let msg = error;
+                    // show error message
                     if (
                         error.response &&
                         error.response.data &&
                         error.response.data.message
                     ) {
-                        msg = error.response.data.message;
+                        this.$q.notify({
+                            message: error.response.data.message,
+                            icon: 'error',
+                            color: 'negative',
+                        });
+                    } else {
+                        this.$q.notify({
+                            message: 'Error found. Please try again!',
+                            icon: 'error',
+                            color: 'negative',
+                        });
                     }
-                    this.$q.notify(msg);
                 });
         },
     },
     computed: {
         ...mapState({
-            auth: state => state.login.auth,
+            auth: state => state.login,
         }),
     },
 };

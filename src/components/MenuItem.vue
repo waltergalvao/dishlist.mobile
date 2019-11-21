@@ -20,19 +20,21 @@
                     </div>
                 </div>
 
-                <q-item-label caption class="item__description"
-                    >{{ item.short_description }}
+                <q-item-label caption class="item__description">
+                    <dot
+                        class="item__dot"
+                        :line="2"
+                        :msg="item.short_description"
+                    ></dot>
                 </q-item-label>
 
                 <q-item-section class="block item__tags">
-                    <rating>{{ item.rating }}</rating>
+                    <rating class="reset-left">{{ item.rating }}</rating>
                     <group-dish>2</group-dish>
                     <dish-tags :tags="item.tags" />
                 </q-item-section>
             </q-item-section>
         </q-item>
-
-        <q-separator />
     </router-link>
 </template>
 
@@ -40,10 +42,11 @@
 import Rating from './_dumb/VRating';
 import GroupDish from './_dumb/VGroupDish';
 import DishTags from './DishTags';
+import Dot from 'vue-text-dot';
 
 export default {
     name: 'DishItem',
-    components: {DishTags, GroupDish, Rating},
+    components: {DishTags, GroupDish, Rating, Dot},
     props: {
         item: {
             type: Object,
@@ -62,6 +65,10 @@ export default {
     width: 96px;
     height: 96px;
     border-radius: 4px;
+}
+
+.item__dot {
+    margin: 5px 0 0 0;
 }
 
 .q-item {

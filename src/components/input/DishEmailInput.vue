@@ -5,7 +5,7 @@
         v-model="emailInputText"
         label="Your e-mail *"
         lazy-rules
-        :rules="[emailValidation]"
+        :rules="[val => emailValidation(val) || 'Please enter a valid e-mail']"
     />
 </template>
 
@@ -50,9 +50,8 @@ export default {
                 val !== '' &&
                 val &&
                 regularExpression.test(val);
-            if (!validation) {
-                return 'Please enter a valid e-mail';
-            }
+
+            return validation;
         },
     },
 };
