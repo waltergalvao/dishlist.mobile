@@ -64,7 +64,6 @@ export default {
     },
     mounted() {
         this.$refs.restaurantNameInput.focus();
-        
     },
     methods: {
         ...mapActions({

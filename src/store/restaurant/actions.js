@@ -13,10 +13,6 @@ export default {
             });
     },
     resetRestaurantList({commit}) {
-        
         commit(SET_RESTAURANT, []);
-                
     },
-
-    
 };

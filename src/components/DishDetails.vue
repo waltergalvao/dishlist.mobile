@@ -25,19 +25,12 @@
             <dish-tags :tags="dish.tags" />
         </div>
 
-        <div
-            class="details__ingredients-card"
-            v-if="dish.ingredients.length"
-        >
+        <div class="details__ingredients-card" v-if="dish.ingredients.length">
             <h6 class="details__ingredients-title text-subtitle2 q-my-sm">
                 Ingredients
             </h6>
             <q-card>
-                <q-list
-                    bordered
-                    separator
-                    class="details__ingredients"
-                >
+                <q-list bordered separator class="details__ingredients">
                     <q-item
                         v-for="(ingredient, index) in dish.ingredients"
                         class="details__ingredient-row"
