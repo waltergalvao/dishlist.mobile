@@ -19,11 +19,9 @@ vueAxios.interceptors.response.use(
             error.name === 'Error' &&
             error.response === undefined
         ) {
-            // generate message from 'error'
-            let msg = new String(error);
             // show error message to the user
             Vue.prototype.$q.notify({
-                message: `${msg}`,
+                message: 'There was an error, please try again.',
                 icon: 'error',
                 color: 'negative',
                 timeout: 1500,

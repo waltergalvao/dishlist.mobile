@@ -33,7 +33,7 @@
                         :key="key"
                     />
                 </div>
-                <div v-else-if="restaurantName.length" class="text-center">
+                <div v-else class="text-center">
                     No restaurants found
                 </div>
             </q-list>
@@ -79,12 +79,6 @@ export default {
                 }
             } catch (error) {
                 if (!(error.response && error.response.status === 404)) {
-                    // tell the user to wait a little bit until next try
-                    this.$q.notify({
-                        message: 'Wait a little bit to try again',
-                        icon: 'warning',
-                        timeout: 1500,
-                    });
                     // disable input for a while...
                     this.searchInputIsDisabled = true;
                     // get a reference to this component to use inside setTimeout
