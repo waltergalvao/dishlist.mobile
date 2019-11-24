@@ -67,6 +67,9 @@ export default {
     },
     created() {
         this.$emit('updateTitle', 'Register');
+        if (this.$route.query.backTo) {
+            this.$emit('updateBackRoute', this.$route.query.backTo);
+        }
     },
     components: {
         DishEmailInput,
@@ -82,6 +85,21 @@ export default {
                     password: this.password,
                 })
                 .then(() => {
+                    // Register process is ok. Check if this page was called from review. If true, redirect to that page, if not, go to home
+                    if (this.$route.query.redirectTo) {
+                        // Greetings
+                        this.$q.notify({
+                            message: `Welcome to DishList ${
+                                this.auth.username
+                            }! You may now create your review.`,
+                            icon: 'tag_faces',
+                            timeout: 1000,
+                        });
+
+                        this.$router.push(this.$route.query.redirectTo);
+                        return;
+                    }
+
                     // if user is registered ok, redirect to the home page
                     this.$router.push({
                         name: 'home',
