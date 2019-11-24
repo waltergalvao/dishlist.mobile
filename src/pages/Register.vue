@@ -89,9 +89,8 @@ export default {
                     if (this.$route.query.redirectTo) {
                         // Greetings
                         this.$q.notify({
-                            message: `Welcome to DishList ${
-                                this.auth.username
-                            }! You may now create your review.`,
+                            message: `Welcome to DishList ${this.username}!
+                            You may now create your review.`,
                             icon: 'tag_faces',
                             timeout: 1000,
                         });
