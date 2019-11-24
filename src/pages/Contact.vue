@@ -1,8 +1,8 @@
 <template>
     <q-page>
         <div class="contact-parent">
-            <div class="contact-child1"></div>
-            <div class="contact-child2">
+            <div class="contact-cover"></div>
+            <div class="contact-content">
                 <h5><b>Contact Us</b></h5>
                 <p>Call or email us to get in touch</p>
                 <q-list dense padding>
@@ -70,7 +70,7 @@ export default {
     height: 80vh;
     width: 100%;
 }
-.contact-child1 {
+.contact-cover {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -79,7 +79,7 @@ export default {
     height: 80%;
     border: 10px solid $primary;
 }
-.contact-child2 {
+.contact-content {
     position: absolute;
     top: 50%;
     left: 45%;
