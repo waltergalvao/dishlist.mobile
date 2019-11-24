@@ -56,6 +56,15 @@ const routes = [
                 component: () => import('pages/Register.vue'),
             },
             {
+                name: 'review.register',
+                path: '/review/register',
+                component: () => import('pages/Register.vue'),
+                meta: {
+                    showBackButton: true,
+                    showNavigation: false,
+                },
+            },
+            {
                 name: 'help',
                 path: '/help',
                 component: () => import('pages/Help.vue'),

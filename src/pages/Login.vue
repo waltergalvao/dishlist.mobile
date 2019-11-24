@@ -32,6 +32,9 @@
                 <q-btn-group spread>
                     <q-btn label="Log In" type="submit" color="primary" />
                 </q-btn-group>
+                <div class="q-mt-lg">
+                    Don't you have an account? <a href="#" @click="goToRegister()">Click here</a>
+                </div>
             </q-form>
         </div>
     </q-page>
@@ -117,6 +120,21 @@ export default {
                     }
                 });
         },
+        goToRegister() {
+            if (this.$route.query.redirectTo) {
+                this.$router.push({
+                    name: 'review.register',
+                    query: {
+                        redirectTo: this.$route.query.redirectTo,
+                        backTo: this.$route.query.backTo,
+                    },
+                });
+            } else {
+                this.$router.push({
+                    name: 'register',
+                });
+            }
+        }
     },
     computed: {
         ...mapState({
