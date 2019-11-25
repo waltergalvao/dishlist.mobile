@@ -25,14 +25,15 @@
 
         <!-- Menu items -->
         <!-- First group - Restaurants -->
-        <q-list>
+        <q-list class="links">
             <q-item-label header>Select Restaurant</q-item-label>
             <!-- Link to home page, where the user can click to scan the QR Code -->
             <q-item
                 clickable
                 v-ripple
                 :to="{name: 'home'}"
-                active-class="menu--active"
+                active-class="none"
+                exact-active-class="q-router-link--active"
             >
                 <q-item-section avatar>
                     <q-icon name="fas fa-qrcode" />
@@ -46,7 +47,6 @@
                 clickable
                 v-ripple
                 :to="{name: 'restaurant.search'}"
-                active-class="menu--active"
             >
                 <q-item-section avatar>
                     <q-icon name="search" />
@@ -56,7 +56,6 @@
             </q-item>
 
             <!-- Horizontal Line Separator -->
-            <q-separator color="#E3E3E3" inset></q-separator>
 
             <!-- User menu -->
             <q-item-label header>User</q-item-label>
@@ -99,7 +98,27 @@
                 <q-item-section>Logout</q-item-section>
             </q-item>
             <!-- Horizontal Line -->
-            <q-separator color="#E3E3E3" inset></q-separator>
+
+            <!-- User menu -->
+            <q-item-label header>Help</q-item-label>
+
+            <q-item clickable v-ripple
+                    :to="{name: 'help'}">
+                <q-item-section avatar>
+                    <q-icon name="fas fa-question" />
+                </q-item-section>
+
+                <q-item-section>FAQ</q-item-section>
+            </q-item>
+
+            <q-item clickable v-ripple
+                    :to="{name: 'contact'}">
+                <q-item-section avatar>
+                    <q-icon name="fas fa-sign-out-alt" />
+                </q-item-section>
+
+                <q-item-section>Contact</q-item-section>
+            </q-item>
         </q-list>
     </q-drawer>
 </template>
@@ -173,6 +192,10 @@ export default {
 
     &__name {
         padding-top: 10px;
+    }
+
+    .q-item {
+        padding: 10px 16px !important;
     }
 }
 </style>
