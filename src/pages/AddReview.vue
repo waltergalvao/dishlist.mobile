@@ -128,6 +128,7 @@ export default {
             await this.fetchDish(this.$route.params.dishId);
         }
 
+        this.formData.user.id = this.auth.id;
         this.$emit('updateTitle', 'Add Review');
         this.$emit('updateBackRoute', this.backRoute);
     },
