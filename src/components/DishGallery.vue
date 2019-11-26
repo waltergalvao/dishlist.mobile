@@ -4,7 +4,11 @@
             Those photos are uploaded by customers and contain unmoderated data.
         </q-banner>
 
-        <div id="photo-gallery" class="gallery__photos" v-if="images.length > 0">
+        <div
+            id="photo-gallery"
+            class="gallery__photos"
+            v-if="images.length > 0"
+        >
             <gallery
                 :images="images"
                 :index="index"
@@ -90,7 +94,7 @@ export default {
         el = el.parentElement;
         // https://stackoverflow.com/questions/9038625/detect-if-device-is-ios
         if (navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform)) {
-            while(el.tagName !== "BODY") {
+            while (el.tagName !== 'BODY') {
                 el = el.parentElement;
                 if (el.classList.contains('scroll')) {
                     el.classList.remove('scroll');
@@ -98,7 +102,7 @@ export default {
                 }
             }
         }
-    }
+    },
 };
 </script>
 

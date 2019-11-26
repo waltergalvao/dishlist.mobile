@@ -33,7 +33,8 @@
                     <q-btn label="Log In" type="submit" color="primary" />
                 </q-btn-group>
                 <div class="q-mt-lg">
-                    Don't you have an account? <a href="#" @click="goToRegister()">Click here</a>
+                    Don't you have an account?
+                    <a href="#" @click="goToRegister()">Click here</a>
                 </div>
             </q-form>
         </div>
@@ -134,7 +135,7 @@ export default {
                     name: 'register',
                 });
             }
-        }
+        },
     },
     computed: {
         ...mapState({
