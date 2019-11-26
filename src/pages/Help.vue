@@ -25,7 +25,8 @@
                 </q-card>
             </q-expansion-item>
             <q-separator />
-            <q-expansion-item group="faq"
+            <q-expansion-item
+                group="faq"
                 class=""
                 label="Which restaurants use Dishlist?"
             >
@@ -55,7 +56,11 @@
                 </q-card>
             </q-expansion-item>
             <q-separator />
-            <q-expansion-item group="faq" class="" label="How to find a restaurant?">
+            <q-expansion-item
+                group="faq"
+                class=""
+                label="How to find a restaurant?"
+            >
                 <q-card>
                     <q-card-section>
                         <p>
@@ -86,7 +91,8 @@
                 </q-card>
             </q-expansion-item>
             <q-separator />
-            <q-expansion-item group="faq"
+            <q-expansion-item
+                group="faq"
                 class=""
                 label="Understanding the Restaurant’s Menu"
             >

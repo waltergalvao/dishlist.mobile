@@ -43,11 +43,7 @@
             </q-item>
 
             <!-- Link to search restaurant by name -->
-            <q-item
-                clickable
-                v-ripple
-                :to="{name: 'restaurant.search'}"
-            >
+            <q-item clickable v-ripple :to="{name: 'restaurant.search'}">
                 <q-item-section avatar>
                     <q-icon name="search" />
                 </q-item-section>
@@ -102,8 +98,7 @@
             <!-- User menu -->
             <q-item-label header>Help</q-item-label>
 
-            <q-item clickable v-ripple
-                    :to="{name: 'help'}">
+            <q-item clickable v-ripple :to="{name: 'help'}">
                 <q-item-section avatar>
                     <q-icon name="fas fa-question" />
                 </q-item-section>
@@ -111,8 +106,7 @@
                 <q-item-section>FAQ</q-item-section>
             </q-item>
 
-            <q-item clickable v-ripple
-                    :to="{name: 'contact'}">
+            <q-item clickable v-ripple :to="{name: 'contact'}">
                 <q-item-section avatar>
                     <q-icon name="fas fa-sign-out-alt" />
                 </q-item-section>
