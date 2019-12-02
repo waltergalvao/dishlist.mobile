@@ -28,8 +28,13 @@ const routes = [
             },
             {
                 name: 'home',
-                path: '/',
+                path: '/home',
                 component: () => import('pages/Home.vue'),
+            },
+            {
+                name: 'splash.screen',
+                path: '/',
+                component: () => import('pages/SplashScreen.vue'),
             },
             {
                 name: 'restaurant.search',
