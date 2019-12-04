@@ -16,8 +16,12 @@
                 </div>
                 <div class="splash-screen__wrap__text">
                     <div class="splash-screen__wrap__text__appName">
-                        <span class="splash-screen__wrap__text__appName_red">DISH</span>
-                        <span class="splash-screen__wrap__text__appName_black">LIST</span>
+                        <span class="splash-screen__wrap__text__appName_red"
+                            >DISH</span
+                        >
+                        <span class="splash-screen__wrap__text__appName_black"
+                            >LIST</span
+                        >
                     </div>
                     <div class="splash-screen__wrap__text__appSlogan">
                         Where your dishes come true
@@ -34,8 +38,7 @@ import {mapActions, mapState} from 'vuex';
 export default {
     name: 'Home',
     data() {
-        return {
-        };
+        return {};
     },
     mounted() {
         if (!this.hideSplashScreenState) {
@@ -61,7 +64,6 @@ export default {
 </script>
 
 <style lang="scss">
-
 // Splash Screen Configuration
 div.hide-splash-screen {
     display: none;
@@ -99,7 +101,7 @@ div.hide-splash-screen {
             grid-column: 1/2;
 
             &__appName {
-                font-size:35px;
+                font-size: 35px;
                 font-weight: 400;
                 animation: pulse 3s ease-in-out;
 

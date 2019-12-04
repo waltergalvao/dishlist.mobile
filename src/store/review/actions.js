@@ -9,6 +9,9 @@ export default {
             .get('/review/read.php?id=' + dishId + '&page=' + page)
             .then(response => {
                 commit(LOAD_REVIEWS, response.data);
+            })
+            .catch(() => {
+                commit(CLEAR_REVIEWS);
             });
     },
     // eslint-disable-next-line no-unused-vars

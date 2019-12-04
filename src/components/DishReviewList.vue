@@ -5,10 +5,10 @@
         >
             <q-icon name="star" /> {{ dish.rating }}
         </div>
-        <div class="text-weight-light text-center">
+        <div class="text-weight-light text-center" v-if="isLoading === false">
             {{ reviewData.pagination.total_reviews }} reviews
         </div>
-        <q-list class="q-mt-sm">
+        <q-list class="q-mt-sm" v-if="reviewData.reviews.length">
             <div v-for="review in reviewData.reviews" :key="review.id">
                 <q-item>
                     <q-item-section>
