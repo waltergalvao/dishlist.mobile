@@ -108,10 +108,18 @@
 
             <q-item clickable v-ripple :to="{name: 'contact'}">
                 <q-item-section avatar>
-                    <q-icon name="fas fa-sign-out-alt" />
+                    <q-icon name="far fa-envelope-open" />
                 </q-item-section>
 
                 <q-item-section>Contact</q-item-section>
+            </q-item>
+
+            <q-item clickable v-ripple :to="{name: 'credits'}">
+                <q-item-section avatar>
+                    <q-icon name="fas fa-signature" />
+                </q-item-section>
+
+                <q-item-section>Credits</q-item-section>
             </q-item>
         </q-list>
     </q-drawer>
