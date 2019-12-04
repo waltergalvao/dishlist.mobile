@@ -196,8 +196,4 @@ export default {
 .q-expansion-item {
     background-color: $secondary;
 }
-
-.q-list {
-    width: 80%;
-}
 </style>
