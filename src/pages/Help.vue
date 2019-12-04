@@ -174,6 +174,19 @@
                 </q-card>
             </q-expansion-item>
             <q-separator />
+            <q-expansion-item group="faq" class="" label="References & Credits">
+                <q-card>
+                    <q-card-section>
+                        <p>Below is a list of images used</p>
+                        <p><a href="#">Reference 1</a></p>
+                        <p><a href="#">Reference 2</a></p>
+                        <p><a href="#">Reference 3</a></p>
+                        <p><a href="#">Reference 4</a></p>
+                        <p><a href="#">Reference 5</a></p>
+                    </q-card-section>
+                </q-card>
+            </q-expansion-item>
+            <q-separator />
         </q-list>
     </q-page>
 </template>
