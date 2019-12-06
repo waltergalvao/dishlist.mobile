@@ -99,6 +99,13 @@ export default {
     height: 30px;
     margin-right: 10px;
 }
+
+.contact-detail::after {
+    content: '';
+
+    border-right: 3px solid #ddd;
+}
+
 .contact-detail {
     margin-bottom: 20px;
     padding-left: 0px !important;

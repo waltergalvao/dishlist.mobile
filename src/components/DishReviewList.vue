@@ -1,7 +1,7 @@
 <template>
     <div class="reviews">
         <div
-            class="text-orange-4 no-margin text-h3 text-center flex justify-center "
+            class="text-orange-4 float no-margin text-h3 text-center flex justify-center "
         >
             <q-icon name="star" /> {{ dish.rating }}
         </div>
